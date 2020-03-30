@@ -1,3 +1,8 @@
+home:
+  path: / # Chemin racine
+  controller: App\Controller\HomeController::index # Nom de classe à appelé plus la méthode de cette classe
+
+
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
