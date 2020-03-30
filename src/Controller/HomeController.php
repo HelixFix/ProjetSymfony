@@ -11,6 +11,7 @@ class HomeController
      */
     private $twig;
 
+    // public function __construct(Environment $twig) // Pour un chargement automatique du service
     public function __construct($twig)
     {
         $this->twig = $twig; // Initialise l'objet twig
