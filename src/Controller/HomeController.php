@@ -3,6 +3,7 @@
 namespace App\Controller; // Doit correspondre à la structure des dossiers
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpClient\HttpClient;
 
 class HomeController 
 {
