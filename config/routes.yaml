@@ -7,7 +7,7 @@ shop:
   controller: App\Controller\HomeController::shop
 
 donation:
-  path: /dons   
+  path: /don  
   controller: App\Controller\HomeController::donation
 
 contact:  
