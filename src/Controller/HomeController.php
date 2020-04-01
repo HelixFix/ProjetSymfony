@@ -26,5 +26,26 @@ class HomeController
        
     }
 
+    public function shop() : Response // Permet d'afficher la page d'accueil
+    {
+        // return new Response('Salut les gens');
+        return new Response($this->twig->render('pages/shop.html.twig')); // Charge home.html.twig
+       
+    }
+
+    public function donation() : Response // Permet d'afficher la page d'accueil
+    {
+        // return new Response('Salut les gens');
+        return new Response($this->twig->render('pages/donation.html.twig')); // Charge home.html.twig
+       
+    }
+
+    public function contact() : Response // Permet d'afficher la page d'accueil
+    {
+        // return new Response('Salut les gens');
+        return new Response($this->twig->render('pages/contact.html.twig')); // Charge home.html.twig
+       
+    }
+
 }
 
