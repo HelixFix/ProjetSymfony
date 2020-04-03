@@ -1,18 +1,22 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<div class="jumbotron text-center">
-<h1>Page de don</h1>
-<p>Pourquoi ne pas profiter du confinement pour préparer vos prochaines vacances ? 
-</p>
-</div>
+	<div class="container col-md-12">
+		<div class="col-md-12 d-flex justify-content-center">
+			<h1>Page de don</h1>
+		</div>
+		<div class="col-md-12 d-flex justify-content-center">
+			<p>Faire un don pour la construction du site ?</p>
+		</div>
+	</div>
+	<div id="donation">
 
-<div id="donation">
-<Donation/>
-</div>
+		<Donation/>
+
+	</div>
 
 {% endblock %}
 {% block javascripts %}
-{{ parent() }}
-   {{ encore_entry_script_tags('donation')}}
+	{{ parent() }}
+	{{ encore_entry_script_tags('donation')}}
 {% endblock %}
