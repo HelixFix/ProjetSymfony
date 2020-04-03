@@ -2,17 +2,6 @@ home:
   path: / # Chemin racine
   controller: App\Controller\HomeController::index # Nom de classe à appelé plus la méthode de cette classe - Première route la page d'accueil
 
-shop:
-  path: /magasins 
-  controller: App\Controller\HomeController::shop
-
-donation:
-  path: /don  
-  controller: App\Controller\HomeController::donation
-
-contact:  
-  path: /contact 
-  controller: App\Controller\HomeController::contact
 
 #index:
 #    path: /

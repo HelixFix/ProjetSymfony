@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div id="donation">
+<Donation/>
+</div>
+
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+   {{ encore_entry_script_tags('donation')}}
+{% endblock %}
