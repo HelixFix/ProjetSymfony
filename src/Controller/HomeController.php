@@ -28,27 +28,6 @@ class HomeController
        
     }
 
-    public function shop() : Response // Permet d'afficher la page magasins
-    {
-        
-        return new Response($this->twig->render('pages/shop.html.twig')); // Charge shop.html.twig
-       
-    }
-
-    public function donation() : Response // Permet d'afficher la page donation
-    {
-        
-        return new Response($this->twig->render('pages/donation.html.twig')); // Charge donation.html.twig
-       
-    }
-
-    public function contact() : Response // Permet d'afficher la page contact
-    {
-        
-        return new Response($this->twig->render('pages/contact.html.twig')); // Charge contact.html.twig
-       
-    }
-
 }
 
 /**

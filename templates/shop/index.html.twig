@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="jumbotron text-center">
+		<h1>Page des magasins</h1>
+		<p>Pourquoi ne pas profiter du confinement pour préparer vos prochaines vacances ?
+		</p>
+	</div>
+
+
+</div>
+
+<div id="shop">
+    <Shop/>
+</div>
+	
+</div>{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('shop')}}
+{% endblock %}
