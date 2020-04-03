@@ -20,14 +20,5 @@ class DonationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/test", name="test")
-     */
-    public function test()
-    {
-        return $this->render('pages/contact.html.twig', [
-            'controller_name' => 'DonationController',
-        ]);
-    }
 
 }

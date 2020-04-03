@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Depuis donation.vuddde</h1>
+    <h1>Depuis donation.vue</h1>
   </div>
 </template>
 
