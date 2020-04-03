@@ -5,7 +5,6 @@ namespace App\Controller; // Doit correspondre à la structure des dossiers
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpClient\HttpClient; // Pour l'utilisation de l'API
 
-
 class HomeController 
 {
     /**
@@ -17,8 +16,7 @@ class HomeController
     public function __construct($twig)
     {
         $this->twig = $twig; // Initialise l'objet twig
-        //trraitement
-        //payement
+        
     }
 
     public function index() : Response // Permet d'afficher la page d'accueil
@@ -30,6 +28,3 @@ class HomeController
 
 }
 
-/**
- * @rpu
- */

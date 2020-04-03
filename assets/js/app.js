@@ -15,10 +15,9 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
 
 import Vue from 'vue'
-import Donation from './Donation.vue'
+import App from './App.vue'
 
 new Vue({
-    el: "#donation",
-    components: {Donation},
-    template: "<Donation/>"
+    el: "#app",
+    components: {App}
 })

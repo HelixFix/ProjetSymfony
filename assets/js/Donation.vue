@@ -1,15 +1,18 @@
 <template>
-<div>
-<h1>coucou</h1>
-</div>
+    <div>
+        <h2>Welcome vue</h2>
+        <button @click="counter++"> Click me {{ counter }}</button>
+    </div>
 </template>
 
 <script>
-
-
+export default {
+    data: () => ({
+        counter: 0
+})
+}
 </script>
 
-<style lang="scss">
-@import '../style.scss';
-</style>
+<style>
 
+</style>

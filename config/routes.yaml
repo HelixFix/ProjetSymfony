@@ -3,7 +3,6 @@ home:
   controller: App\Controller\HomeController::index # Nom de classe à appelé plus la méthode de cette classe - Première route la page d'accueil
 
 
-
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
