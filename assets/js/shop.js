@@ -25,13 +25,18 @@ import Shop from './Shop.vue'
 // })
 
 new Vue({
-    el: '#shop',
-    data () {
-        return data;
-    },
-    mounted () {
-      axios
-        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        .then(response => (this.info = response))
-    }
-  })
+    el: "#donation",
+    components: {Donation},
+    template: "<Donation/>"
+    
+})
+
+try{
+    $response = new Response();
+    $response->headers->set('Authorization', 'Bearer 526c1976-308d-3df0-957a-416622680356');
+    $response->send();
+    return $this->redirect('https://api.insee.fr/entreprises/sirene/V3/siret?q=trancheEffectifsEtablissement:21');      
+}
+catch(\Exception $e){
+    error_log($e->getMessage());
+}

@@ -30,7 +30,4 @@ services:
         arguments:
             $twig: '@twig' # Charge le service Twig\Environment
 
-    # App\Controller\ShopController:    
-    #     tags: ['controller.service_arguments']
-    #     arguments:
-    #         $twig: '@twig' # Charge le service Twig\Environment
+ 
