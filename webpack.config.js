@@ -24,9 +24,12 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addEntry('css', './assets/css/app.css')
+    .addEntry('stripe', './assets/js/stripe.js')
     .addEntry('contact', './assets/js/contact.js')
     .addEntry('shop', './assets/js/shop.js')
     .addEntry('donation', './assets/js/donation.js')
+    
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -57,7 +60,7 @@ Encore
     .enableVueLoader() // Activer Vuejs
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

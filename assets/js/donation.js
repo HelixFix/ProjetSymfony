@@ -11,7 +11,7 @@ import '../css/app.css';
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 // import $ from 'jquery';
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+console.log('Hello Webpack Encore! Edit me in assets/js/donation.js');
 
 
 import Vue from 'vue'
@@ -21,14 +21,21 @@ import Card from './components/Card.vue'
 
 new Vue({
     el: "#donation",
-    components: {Donation},
-    template: "<Donation/>",
     components: {
-
-        Card
-        
-      },
+      Donation,
+      // Card
+    },
+    template: "<Donation/>",
+    // template: "<Card/>",
     
 })
 
 
+
+Vue.component('Card',{
+  el: "#card",
+  components: {Card},
+  template: "<Card/>",
+ 
+  
+})
