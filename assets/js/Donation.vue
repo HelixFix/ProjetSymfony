@@ -1,13 +1,10 @@
 <template>
   <div class="col-md-12 d-flex justify-content-center">
-    
-    <Card/>
-  
     <form action="#" method="post" id="form">
       <div class="container">
         <div class="row">
-          <div class="col-xs-12 col-md-12">
-            <div class="panel panel-default">
+          <div class="border d-flex justify-content-center">
+            <div class="panel panel-default col-md-8">
               <div class="panel-body">
                 <form role="form">
                    <label for="price">what you want thank you!</label>
@@ -91,14 +88,17 @@
 </template>
 
 <script>
-import Card from './components/Card.vue'
-export default {
-  components: {
+
+//  import Card from './components/Card'
+// export default {
+
+//   el:'#card',
+//   components: {
     
-    Card
-  },
-  // ...
-}
+//     Card
+//   },
+//    template: '<div class="card bg-dark text-white"><img class="card-img" src="..." alt="Card image"><div class="card-img-overlay"><h5 class="card-title">Card title</h5><p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p><p class="card-text">Last updated 3 mins ago</p></div></div>'
+// }
 // let stripe = Stripe(`pk_test_cveopxQHO6zY0MkHmtnOUcX700qOCC5IgP`),
 //   elements = stripe.elements(),
 //   card = undefined;

@@ -25,6 +25,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('css', './assets/css/app.css')
+    .addEntry('images', './assets/images/card/')
     .addEntry('stripe', './assets/js/stripe.js')
     .addEntry('contact', './assets/js/contact.js')
     .addEntry('shop', './assets/js/shop.js')
