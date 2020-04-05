@@ -1,42 +1,43 @@
 <template>
   <div class="col-md-12 d-flex justify-content-center">
-    <form action="#" method="post" id="form">
+    <form action="#" method="post" id="payment-form">
       <div class="container">
         <div class="row">
           <div class="border d-flex justify-content-center">
             <div class="panel panel-default col-md-8">
               <div class="panel-body">
-                <form role="form">
-                   <label for="price">what you want thank you!</label>
+                
+                   <label for="price">Montant de votre don</label>
                   <input type="text" 
                           class="form-control"
                           id="price"
                           placeholder="Enter your price"
                           required
                           autofocus
-                          value="$"
+                          value="€"
                           />
                          
                   <div class="form-group">
-                    <label for="cardNumber"> CARD NUMBER</label>
+                    <label for="cardNumber"> Numéro de Carte</label>
                     <div class="input-group">
                       <input
                         type="text"
                         class="form-control"
                         id="cardNumber"
-                        placeholder="Valid Card Number"
+                        placeholder="Numéro de Carte"
                         required
                         autofocus
                       />
+                      <div id="card-errors" role="alert"></div>
                       <span class="input-group-addon"
                         ><span class="glyphicon glyphicon-lock"></span
                       ></span>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-xs-7 col-md-7">
+                    <div class="col-xs-6 col-md-8">
                       <div class="form-group">
-                        <label for="expityMonth"> EXPIRY DATE</label>
+                        <label for="expityMonth"> Date d'expiration</label>
                         <div class="col-xs-6 col-lg-6 pl-ziro">
                           <input
                             type="text"
@@ -57,14 +58,14 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-xs-5 col-md-5 pull-right">
+                    <div class="col-xs-4 col-md-4 pull-right">
                       <div class="form-group">
-                        <label for="cvCode"> CV CODE</label>
+                        <label for="cvCode">CVC</label>
                         <input
                           type="password"
                           class="form-control"
                           id="cvCode"
-                          placeholder="CV"
+                          placeholder="CVC"
                           required
                         />
                       </div>
@@ -76,8 +77,9 @@
                     class="btn btn-success btn-lg btn-block"
                     id="btnsumbit"
                     value="Pay"
-                    >Pay</button>
-                </form>
+                    v-on:click="purchase"
+                    >Payé</button>
+               
               </div>
             </div>
           </div>

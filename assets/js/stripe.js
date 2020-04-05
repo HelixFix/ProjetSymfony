@@ -1,13 +1,12 @@
+// const stripe = Stripe('pk_test_cveopxQHO6zY0MkHmtnOUcX700qOCC5IgP');
 
 
-// let stripe = Stripe(publishableKey)('pk_test_cveopxQHO6zY0MkHmtnOUcX700qOCC5IgP');
+// let form = document.getElementById("form");
 
-// console.log(stripe);
-
-// document.getElementById("myBtn").addEventListener("click", function() {
+// form.addEventListener("submit", function(e) {
    
+//          e.preventDefault();
 
-
-
+// alert();
 
 //   });
