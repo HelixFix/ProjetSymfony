@@ -1,14 +1,8 @@
 {
     "devDependencies": {
-        "@babel/core": "^7.9.0",
-        "@babel/preset-env": "^7.9.0",
         "@symfony/webpack-encore": "^0.28.2",
-        "babel-loader": "^8.1.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
-        "vue-loader": "^15.9.1",
-        "vue-template-compiler": "^2.6.11",
-        "webpack": "^4.42.1",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
@@ -21,7 +15,8 @@
     },
     "dependencies": {
         "axios": "^0.19.2",
-        "card": "^2.4.0",
-        "vue": "^2.6.11"
+        "vue": "^2.6.11",
+        "vue-loader": "^15.9.1",
+        "vue-template-compiler": "^2.6.11"
     }
 }
