@@ -18,34 +18,37 @@ import Vue from 'vue'
 import Shop from './Shop.vue'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://api.insee.fr/entreprises/sirene/V3/siret?q';
-axios.defaults.headers.common['Authorization'] = "Bearer a6452ce6-b2d3-3292-bd24-c5de16d6d937";
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+new Vue({
+  el: "#shop",
+  template: "<Shop></Shop>",
+  components: {Shop}
+})
 
-axios.get('https://api.insee.fr/entreprises/sirene/V3/')
-  .then((response) => {
-    console.log(response.data);
-    console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
-  });
+// axios.defaults.baseURL = 'https://api.insee.fr/entreprises/sirene/V3/siret?q';
+// axios.defaults.headers.common['Authorization'] = "Bearer a6452ce6-b2d3-3292-bd24-c5de16d6d937";
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+// axios.get('https://api.insee.fr/entreprises/sirene/V3/')
+//   .then((response) => {
+//     console.log(response.data);
+//     console.log(response.status);
+//     console.log(response.statusText);
+//     console.log(response.headers);
+//     console.log(response.config);
+//   });
 
 
-  //
-  const AuthStr = 'Bearer '.concat(USER_TOKEN);
-  axios.get(URL, { headers: { Authorization: AuthStr } }).then(response => {
-          // If request is good...
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log('error 3 ' + error);
-        });
+//   //
+//   const AuthStr = 'Bearer '.concat(USER_TOKEN);
+//   axios.get(URL, { headers: { Authorization: AuthStr } }).then(response => {
+//           // If request is good...
+//           console.log(response.data);
+//         })
+//         .catch((error) => {
+//           console.log('error 3 ' + error);
+//         });
 
-// new Vue({
-//     el: "#shop",
-//     components: {ApiShop}
-// })
+
 
 // new Vue({
 //     el: '#shop',
