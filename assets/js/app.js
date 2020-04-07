@@ -17,6 +17,9 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 import Vue from 'vue'
 import App from './App.vue'
 
+
+const axios = require('axios').default;
+
 new Vue({
     el: "#app",
     components: {App},

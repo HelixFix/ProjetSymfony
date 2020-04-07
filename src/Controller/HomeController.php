@@ -34,21 +34,20 @@ class HomeController
 
 
     /**
-     * @Route("/api", name="api")
+     * @Route("/api/categories", name="categories")
      *
      */
-    public function get_api(Request $request){
+    public function getCategories(Request $request){
 
     
     $client = HttpClient::create();
-    $data =$client->request('GET', 'https://world.openfoodfacts.org/entry-date/2019.json');
+    $data =$client->request('GET', 'https://world.openfoodfacts.org/categories.json');
     $response = new JsonResponse();
     
     return $response::fromJsonString($data->getContent());
 
     
-}
-
+    }
 
 }
 
