@@ -24,11 +24,16 @@ class ShopController extends AbstractController
      */
     public function test(Request $request)
     {
-        dd($request);
+        // dd($request->get('form')); // commenter pour afficher le json
         $client = HttpClient::create();
-        $data = $client->request('GET', 'https://api.insee.fr/entreprises/sirene/V3/siret?q=codePostalEtablissement:68100',['auth_bearer' => 'a6452ce6-b2d3-3292-bd24-c5de16d6d937']);
+        $cp = rtrim($request->get('form'));
+        // $url = "https://api.insee.fr/entreprises/sirene/V3/siret?q=codePostalEtablissement: + ";
+        $url = "https://api.insee.fr/entreprises/sirene/V3/siret?q=codePostalEtablissement:$cp";
+        $data = $client->request('GET',$url,['auth_bearer' => 'a6452ce6-b2d3-3292-bd24-c5de16d6d937']);
         $response = new JsonResponse();
         return $response::fromJsonString($data->getContent());
 
     }
 }
+
+// https://api.insee.fr/entreprises/sirene/V3/siret?q=codePostalEtablissement:{{ formData }}',
