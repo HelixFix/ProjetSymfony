@@ -3,22 +3,37 @@
     <div class="col-md-12">
       <h2>Rechecher vos recettes</h2>
       <div class="row">
-       <form action="/test" method="POST" id="form">
-        <input type="text" name="search" placeholder="Search...">
+       <form
+        action="search/id"
+        method="get"
+        id="formRecipesSearch">
+
+        <input
+          type="text"
+          name="search"
+          placeholder="Search..."
+          required>
+
         <button class="btn btn-success" type="submit">Search</button>
        </form>
       </div>
+      <div id="app">
       <ResultSearch/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 // const axios = require("axios").default;
-import ResultSearch from "./components/ResultSearch.vue"
+import ResultSearch from "./components/ResultSearch.vue";
+
 export default {
-  name: "App",
-  component:{ResultSearch},
+  name: "app",
+  components:{
+    ResultSearch
+    },
+  
   data() {
     return {
 
@@ -26,10 +41,10 @@ export default {
     };
   },
    methods: {
-    onSubmit: function(event) {
-      const formData = new FormData(document.getElementById("form"))
+    checkForm: function(event) {
+      const formData = new FormData(document.getElementById("formRecipesSearch").value)
       fetch("/search", {
-        method: "post",
+        method: "get",
         body: formData
       });
     },
@@ -38,6 +53,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 </style>

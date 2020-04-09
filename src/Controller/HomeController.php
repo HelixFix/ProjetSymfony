@@ -34,16 +34,20 @@ class HomeController
 
 
     /**
-     * @Route("/recipes/search", name="search")
+     * @Route("/search/{id}",methods={"GET"} )
      *
      */
-    public function getSearch(Request $request){
+    public function getSearch($id){
 
-        $client = HttpClient::create();
-        $data = $client->request('GET', 'https://api.spoonacular.com/recipes/search',['auth_bearer' => 'fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee']);
+      $client = HttpClient::create(['headers' => [
+        'X-RapidAPI-Host' => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        'X-RapidAPI-Key' => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee"
+        ]]);
+
+        $data = $client->request('GET',"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=burger");
         $response = new JsonResponse();
-        return $response::fromJsonString($data->getContent());
-    
+        $result = $response::fromJsonString($data->getContent());
+        return new Response($this->twig->render('home/home.html.twig',$result)); // Charge home.html.twig
     }
 
 }

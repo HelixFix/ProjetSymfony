@@ -22,6 +22,7 @@ import ResultSearch from "./components/ResultSearch.vue"
 
 new Vue({
     el: "#app",
-    components: {App, ResultSearch},
-    template: "<App/>"
+    // components: {App, ResultSearch},
+    // template: "<App/>"
+    render: h=> h(App)
 })
