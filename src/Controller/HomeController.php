@@ -34,18 +34,15 @@ class HomeController
 
 
     /**
-     * @Route("/api/categories", name="categories")
+     * @Route("/recipes/search", name="search")
      *
      */
-    public function getCategories(Request $request){
+    public function getSearch(Request $request){
 
-    
-    $client = HttpClient::create();
-    $data =$client->request('GET', 'https://world.openfoodfacts.org/categories.json');
-    $response = new JsonResponse();
-    
-    return $response::fromJsonString($data->getContent());
-
+        $client = HttpClient::create();
+        $data = $client->request('GET', 'https://api.spoonacular.com/recipes/search',['auth_bearer' => 'fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee']);
+        $response = new JsonResponse();
+        return $response::fromJsonString($data->getContent());
     
     }
 
