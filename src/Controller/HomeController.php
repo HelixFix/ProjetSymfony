@@ -26,18 +26,18 @@ class HomeController
 
     public function index() : Response // Permet d'afficher la page d'accueil
     {
-        // return new Response('Salut les gens');
-
+       
+       
         return new Response($this->twig->render('home/home.html.twig')); // Charge home.html.twig
        
     }
 
 
     /**
-     * @Route("/search/{id}",methods={"GET"} )
+     * @Route("/search",methods={"GET"} )
      *
      */
-    public function getSearch($id){
+    public function getSearch($result){
 
       $client = HttpClient::create(['headers' => [
         'X-RapidAPI-Host' => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -45,9 +45,15 @@ class HomeController
         ]]);
 
         $data = $client->request('GET',"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=burger");
-        $response = new JsonResponse();
+        $response = new JsonResponse([
+
+            'status'=> 'ok',
+        ]);
         $result = $response::fromJsonString($data->getContent());
-        return new Response($this->twig->render('home/home.html.twig',$result)); // Charge home.html.twig
+        return new Response($this->twig->render('home/home.html.twig', [
+
+            'results'=> $result,
+        ])); // Charge home.html.twig
     }
 
 }

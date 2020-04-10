@@ -1,13 +1,15 @@
 <template>
   <div>
-    <h2>{{ title }}</h2>
+    <h2>{{ titre }}</h2>
     <div class="container">
       <div class="col-md-12">
         <div class="row">
           <ul id="result">
             <li v-for="result in results">
-              {{ result.title }},{{ result.readyInMinutes }},{{ result.image }}
-            </li>
+
+              {{ result.title }}{{ result.readyInMinutes }}{{ result.image }}
+
+           </li>
           </ul>
         </div>
       </div>
@@ -19,21 +21,22 @@ import App from "../App.vue";
 import ResultSearch from "./ResultSearch";
 
 export default {
-//   name: "ResultSearch",
+   name: "ResultSearch",
  
   data() {
     return {
+      titre:"liste de la recherche",
       results: [
         {
-          id: null,
-          title: null,
-          readyInMinutes: null,
-          servings: null,
-          image: null,
+          id: '',
+          title: '',
+          readyInMinutes: '',
+          servings: '',
+          image: '',
           imageUrls: [],
         },
       ],
-    };
+     };
   },
 };
 </script>
