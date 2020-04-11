@@ -6,29 +6,35 @@
       <div class="row">
         <form
           action="/search"
-          method="post"
+          method="get"
           id="formRecipesSearch"
-         
+          @submit="submit"
         >
           <input type="text" name="search" placeholder="Search..." required />
 
           <button class="btn btn-success" type="submit">Search</button>
         </form>
       </div>
-<p>{{ results }}</p>
-      <ResultSearch v-model="results" />
+      <p>{{ results }}</p>
+      <ResultSearch v-model="results"/>
     </div>
+
+<Recipes />
+
   </div>
+
 </template>
 
 <script>
 // const axios = require("axios").default;
 import ResultSearch from "./components/ResultSearch.vue";
+import Recipes from "./components/Recipes.vue";
+
 
 export default {
   name: "app",
   components: {
-    ResultSearch
+    ResultSearch, Recipes
   },
 
   data() {
@@ -45,15 +51,8 @@ export default {
       ]
     };
   },
-   methods: {
+  //  methods: {
 
-      onSubmit: function(event) {
-
-        axios
-        .post('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=burger')
-        .then(response => (this.results = response.data))
-
-      }
 
   //   submit() {
   //     fetch("/search", {
@@ -72,14 +71,17 @@ export default {
   //       });
   //   }
   // }
-  // methods: {
-  //   onSubmit: function(event) {
-  //     const formData = new FormData(document.getElementById("form"))
-  //     fetch("/search", {
-  //       method: "post",
-  //       body: formData
-  //     });
-  //   },
+  methods: {
+
+    submit(){
+
+      const formData = new FormData(document.getElementById("formRecipesSearch"))
+      fetch("/search", {
+        method: "get",
+        body: formData
+
+      });
+    },
 
   }
   //     .then(results => res.status(200).json(results))

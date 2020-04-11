@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controller; // Doit correspondre à la structure des dossiers
 
@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
-class HomeController 
+class HomeController
 {
     /**
      * @var Environment
@@ -21,15 +21,15 @@ class HomeController
     public function __construct($twig)
     {
         $this->twig = $twig; // Initialise l'objet twig
-        
+
     }
 
-    public function index() : Response // Permet d'afficher la page d'accueil
+    public function index(): Response // Permet d'afficher la page d'accueil
     {
-       
-       
+
+
         return new Response($this->twig->render('home/home.html.twig')); // Charge home.html.twig
-       
+
     }
 
 
@@ -37,24 +37,59 @@ class HomeController
      * @Route("/search",methods={"GET"} )
      *
      */
-    public function getSearch($result){
+    public function getSearch(Request $request)
+    {
 
-      $client = HttpClient::create(['headers' => [
-        'X-RapidAPI-Host' => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        'X-RapidAPI-Key' => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee"
+        $client = HttpClient::create(['headers' => [
+            'X-RapidAPI-Host' => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            'X-RapidAPI-Key' => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee",
+            
         ]]);
 
-        $data = $client->request('GET',"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=burger");
+        $data = $client->request(
+            'GET',
+            "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=burger"
+            //  OR
+            // "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random"
+        );
+
         $response = new JsonResponse([
 
-            'status'=> 'ok',
+            
+            'status' => 'ok',
         ]);
-        $result = $response::fromJsonString($data->getContent());
+        $results = $response::fromJsonString($data->getContent());
         return new Response($this->twig->render('home/home.html.twig', [
 
-            'results'=> $result,
+            'results' => $results,
         ])); // Charge home.html.twig
     }
 
-}
 
+    /**
+     * @Route("/",methods={"post"} )
+     *
+     */
+    public function getRecipes()
+    {
+
+        $client = HttpClient::create(['headers' => [
+            'X-RapidAPI-Host' => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            'X-RapidAPI-Key' => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee",
+           
+        ]]);
+
+        $data = $client->request(
+            'GET',
+            "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random"
+        );
+
+        $response = new JsonResponse([
+
+           
+            'status' => 'ok',
+        ]);
+        $response::fromJsonString($data->getContent());
+        return new Response($this->twig->render('home/home.html.twig')); // Charge home.html.twig
+    }
+};

@@ -18,7 +18,7 @@
 </template>
 <script>
 import App from "../App.vue";
-import ResultSearch from "./ResultSearch";
+
 
 export default {
    name: "ResultSearch",
