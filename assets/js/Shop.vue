@@ -4,7 +4,7 @@
 
     <h1>{{ msg }}</h1>
 
-
+    <Postal />
 
     <Shops v-bind:shops="shops"/> <!-- -->
 
@@ -15,12 +15,14 @@
 <script>
 
 import Shops from './components/ShopItem'; // importer Shops.vue
+import Postal from './components/PostalForm'; // importer Shops.vue
 
 export default {
 
   name: "Shop",
    components: {
       Shops, // Enregistrer Shops
+      Postal // Enregistrer Postal
 
   },
 

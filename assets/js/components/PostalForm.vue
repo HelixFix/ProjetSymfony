@@ -14,3 +14,10 @@
 
 </template>
 
+<script>
+
+export default {
+    name: "Postal"
+}
+
+</script>

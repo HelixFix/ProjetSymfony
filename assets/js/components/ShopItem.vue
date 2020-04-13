@@ -18,7 +18,7 @@ export default {
 
     name: "Shops",
     components: {
-        ShopItem // Utiliser ShopItem
+        
     },
     props: ["shops"] // Propriétés de shops
 
