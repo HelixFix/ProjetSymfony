@@ -4,15 +4,9 @@
 
     <h1>{{ msg }}</h1>
 
-    <form id="form" method="post" action="/test">
 
-      <input type="text" name="form" />
 
-      <input type="submit" />
-
-    </form>
-
-    <Shops v-bind:todos="todos"/> <!-- -->
+    <Shops v-bind:shops="shops"/> <!-- -->
 
     </div>
 
@@ -38,6 +32,29 @@ export default {
     };
 
   },
+//     data () {
+
+//       return {
+// // Like a fake REST API
+//           shops: [
+//               {
+//                   id: 1,
+//                   title: "Todo One",
+//                   completed: false
+//               },
+//               {
+//                   id: 2,
+//                   title: "Todo Two",
+//                   completed: true
+//               },
+//               {
+//                   id: 3,
+//                   title: "Todo Three",
+//                   completed: false
+//               }
+//           ]
+//       }
+//   },
   // define methods under the `methods` object
   methods: {
 
