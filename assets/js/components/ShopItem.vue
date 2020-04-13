@@ -2,11 +2,13 @@
 
     <div>
 
-        <div v-bind:key="shop.id" v-for="shop in shops"> <!-- Boucle table ID Todo -->
+        <div v-bind:key="shop.siren" v-for="shop in shops"> <!-- Boucle table ID Todo -->
             <!-- <h3> {{ todo.title }} </h3> Affiche le titre de chaques éléments -->
-            <ShopItem v-bind:shop="shop"/> <!-- Afficher TodoItem -->
 
         </div>
+
+                <h3>{{ shop.enseigne1Etablissement }}</h3>
+                <!-- <p>{{ shop.body }}</p> -->
 
     </div>
 
@@ -20,7 +22,24 @@ export default {
     components: {
         
     },
-    props: ["shops"] // Propriétés de shops
+
+    data() {
+    return {
+        shops: [],
+        shop:{
+            siren: '',
+            enseigne1Etablissement: '',
+            numeroVoieEtablissement: '',
+            typeVoieEtablissement: '',
+            libelleVoieEtablissement: '',
+
+
+        }, 
+        shop_id: '',
+        pagination: {},  
+    }
+},
+
 
     
 

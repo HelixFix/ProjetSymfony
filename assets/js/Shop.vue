@@ -34,6 +34,10 @@ export default {
     };
 
   },
+
+      created() { 
+        this.fetchArticles(); // When it loads we want to run a method called fetch articles
+    },
 //     data () {
 
 //       return {
@@ -59,6 +63,19 @@ export default {
 //   },
   // define methods under the `methods` object
   methods: {
+
+    fetchArticles(page_url) {
+        let vm = this;
+        page_url = page_url || '/test'
+        fetch(page_url)
+        .then(res => res.json())
+        .then(res => {
+            // console.log(res.data);
+            this.articles = res.data;
+            // vm.makePagination(res.meta, res.links);
+        })
+        .catch(err => console.log(err));
+    },
 
     onSubmit: function(event) {
 
