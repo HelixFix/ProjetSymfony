@@ -12,15 +12,23 @@
 
     </form>
 
+    <Shops v-bind:todos="todos"/> <!-- -->
+
     </div>
 
 </template>
 
 <script>
 
+import Shops from './components/ShopItem'; // importer Shops.vue
+
 export default {
 
   name: "Shop",
+   components: {
+      Shops, // Enregistrer Shops
+
+  },
 
   data() {
 
