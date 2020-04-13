@@ -26,8 +26,8 @@ class ShopController extends AbstractController
     {
         // dd($request->get('form')); // commenter pour afficher le json
         $client = HttpClient::create();
-        $cp = rtrim($request->get('form'));
-        // $url = "https://api.insee.fr/entreprises/sirene/V3/siret?q=codePostalEtablissement: + ";
+        // $cp = rtrim($request->get('form')); // Récupère résultat formulaire
+        $cp = ($request->get('form')); // Récupère résultat formulaire
         $url = "https://api.insee.fr/entreprises/sirene/V3/siret?q=codePostalEtablissement:$cp";
         $data = $client->request('GET',$url,['auth_bearer' => 'a6452ce6-b2d3-3292-bd24-c5de16d6d937']);
         $response = new JsonResponse();
