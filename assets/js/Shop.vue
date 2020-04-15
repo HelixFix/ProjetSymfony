@@ -3,12 +3,14 @@
     <h1>{{ msg }}</h1>
 
     <form v-on:submit.prevent="onSubmit" id="form">
-      <input type="text" name="form" />
+      <input type="text" name="form" placeholder="Votre code postal"/>
 
       <input type="submit" />
     </form>
 
-    <div v-for="shop in shops" :key="shop.siret">
+   
+
+    <div class="card card-body mb-2" v-for="shop in shops" :key="shop.siret">
       <!-- <span>{{ shop.adresseEtablissement.codePostalEtablissement }}</span> -->
   
         <div v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut"> <!-- Niveau 1 : parent = etablissements -->
@@ -17,19 +19,15 @@
 
             <div v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
 
-              <strong>Nom:</strong>
-              {{ etablissement.enseigne1Etablissement }} 
+                <strong>Nom:</strong>
+                {{ etablissement.enseigne1Etablissement }} 
+
                 <strong>Adresse:</strong>
-              {{ shop.adresseEtablissement.numeroVoieEtablissement + " " + shop.adresseEtablissement.typeVoieEtablissement + " " +  shop.adresseEtablissement.libelleVoieEtablissement + " " +  shop.adresseEtablissement.codePostalEtablissement + " " +  shop.adresseEtablissement.libelleCommuneEtablissement}}
+                {{ shop.adresseEtablissement.numeroVoieEtablissement + " " + shop.adresseEtablissement.typeVoieEtablissement + " " +  shop.adresseEtablissement.libelleVoieEtablissement + " " +  shop.adresseEtablissement.codePostalEtablissement + " " +  shop.adresseEtablissement.libelleCommuneEtablissement}} <!-- Object pas besoin de faire une boucle -->
+                <!-- <a href="https://www.google.com/search?q=" + {{ etablissement.enseigne1Etablissement }} ></a> -->
+                
 
-              <!-- <div v-for="address in shop.adresseEtablissement" :key="address.libelleVoieEtablissement"> <!-- Niveau 1 : parent = etablissements--
-
-              <strong>Adresse:</strong>
-
-                {{ address.numeroVoieEtablissement + " " + address.typeVoieEtablissement + " " +  address.libelleVoieEtablissement}}
-
-              </div> -->
-
+                <a v-bind:href="url +  etablissement.enseigne1Etablissement +  + shop.adresseEtablissement.numeroVoieEtablissement  + shop.adresseEtablissement.typeVoieEtablissement +  shop.adresseEtablissement.libelleVoieEtablissement + shop.adresseEtablissement.codePostalEtablissement +  shop.adresseEtablissement.libelleCommuneEtablissement"> test </a>
             </div>
 
           </div>
@@ -56,7 +54,9 @@ export default {
   data() {
     return {
       shops: [],
-      msg: "Welcome to Your Vue.js App"
+      msg: "Magasins près de chez vous",
+      url: "https://www.google.com/search?q="
+    //   cp: $cp
     };
   },
 
@@ -99,5 +99,8 @@ export default {
 
 <style scoped>
 
+div:empty {
+    display: none;
+}
 
 </style>
