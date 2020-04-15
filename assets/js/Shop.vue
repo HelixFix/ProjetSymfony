@@ -9,9 +9,9 @@
     </form>
 
     <!-- <div v-for="shop in shops" :key="shop.siret"> -->
-      <!-- <h1>{{ shop.siret }}</h1> -->
+    <!-- <h1>{{ shop.siret }}</h1> -->
 
-      <!-- <li v-for="shop in shops" :key="shop.siret">
+    <!-- <li v-for="shop in shops" :key="shop.siret">
 
          <span>{{ shop.siret }}</span> 
         <span>
@@ -21,23 +21,22 @@
 
         </span>
        <span class="price">{{ pproduct.price }} zł</span> 
-      </li> -->
+    </li>-->
 
-            <li v-for="shop in shops" :key="shop.siret">
-
-        <!-- <span>{{ shop.siret }}</span> -->
-        <span>
-
-    
-            <div v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut">
-
-              <li v-if="etablissement.dateFin === null"><strong>Nom:</strong> {{ etablissement.enseigne1Etablissement + etablissement.dateFin}}</li>
-              
+    <div v-for="shop in shops" :key="shop.siret">
+      <!-- <span>{{ shop.siret }}</span> -->
+  
+        <div v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut">
+          <div v-if="etablissement.dateFin === null">
+            <div v-if="etablissement.enseigne1Etablissement">
+              <strong>Nom:</strong>
+              {{ etablissement.enseigne1Etablissement + " " + etablissement.dateFin }}
             </div>
-
-        </span>
-       <!-- <span class="price">{{ pproduct.price }} zł</span>  -->
-      </li>
+          </div>
+        </div>
+  
+      <!-- <span class="price">{{ pproduct.price }} zł</span>  -->
+    </div>
 
     <!-- </div> -->
 
@@ -97,3 +96,8 @@ export default {
   // }
 };
 </script>
+
+<style scoped>
+
+
+</style>
