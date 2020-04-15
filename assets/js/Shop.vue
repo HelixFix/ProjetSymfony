@@ -27,7 +27,7 @@
                 <!-- <a href="https://www.google.com/search?q=" + {{ etablissement.enseigne1Etablissement }} ></a> -->
                 
 
-                <a v-bind:href="url +  etablissement.enseigne1Etablissement +  + shop.adresseEtablissement.numeroVoieEtablissement  + shop.adresseEtablissement.typeVoieEtablissement +  shop.adresseEtablissement.libelleVoieEtablissement + shop.adresseEtablissement.codePostalEtablissement +  shop.adresseEtablissement.libelleCommuneEtablissement"> test </a>
+                <a v-bind:href="url + etablissement.enseigne1Etablissement + ' ' + shop.adresseEtablissement.numeroVoieEtablissement + ' ' + shop.adresseEtablissement.typeVoieEtablissement + ' ' + shop.adresseEtablissement.libelleVoieEtablissement + ' ' + shop.adresseEtablissement.codePostalEtablissement + ' ' + shop.adresseEtablissement.libelleCommuneEtablissement"> test </a>
             </div>
 
           </div>
