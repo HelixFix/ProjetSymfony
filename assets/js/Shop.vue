@@ -17,7 +17,7 @@
         <span>
 
           <strong>Nom:</strong>
-          <strong v-for="etablissement in shop.periodesEtablissement" :key="etablissement.enseigne1Etablissement">{{ shop.enseigne1Etablissement }}</strong>
+          <strong v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut">{{ etablissement.enseigne1Etablissement }}</strong>
 
         </span>
         <!-- <span class="price">{{ pproduct.price }} zł</span> -->
