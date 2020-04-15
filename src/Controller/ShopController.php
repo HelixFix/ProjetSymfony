@@ -13,13 +13,15 @@ class ShopController extends AbstractController
     /**
      * @Route("/magasins", name="shop")
      */
-    public function index()
+    public function index(Request $request)
     {
         return $this->render('shop/index.html.twig', [
             'controller_name' => 'ShopController',
         ]);
+
     }
-        /**
+    
+     /**
      * @Route("/test", name="test")
      */
     public function test(Request $request)

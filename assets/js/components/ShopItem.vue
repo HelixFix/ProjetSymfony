@@ -1,47 +1,37 @@
 <template>
 
-    <div>
+    <div v-for="shop in shops" :key="shop.siren"> 
 
-        <div v-bind:key="shop.siren" v-for="shop in shops"> <!-- Boucle table ID Todo -->
-            <!-- <h3> {{ todo.title }} </h3> Affiche le titre de chaques éléments -->
-
-        </div>
-
-                <h3>{{ shop.enseigne1Etablissement }}</h3>
-                <!-- <p>{{ shop.body }}</p> -->
+        <h1>{{ shop.enseigne1Etablissement }}</h1>
 
     </div>
+
 
 </template>
 
 <script>
 
 export default {
+    name: "ShopItem",
+    props: ["shops"], // Propriétés
 
-    name: "Shops",
-    components: {
-        
-    },
 
     data() {
-    return {
-        shops: [],
-        shop:{
-            siren: '',
-            enseigne1Etablissement: '',
-            numeroVoieEtablissement: '',
-            typeVoieEtablissement: '',
-            libelleVoieEtablissement: '',
+        return {
+            shops: [],
+            shop:{
+                siren: '',
+                enseigne1Etablissement: '',
+                numeroVoieEtablissement: '',
+                typeVoieEtablissement: '',
+                libelleVoieEtablissement: '',
 
 
-        }, 
-        shop_id: '',
-        pagination: {},  
-    }
-},
-
-
-    
+            }, 
+            // shop_id: '',
+            // pagination: {},  
+        }
+    },
 
 }
 
