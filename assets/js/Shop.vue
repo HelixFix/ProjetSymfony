@@ -8,34 +8,34 @@
       <input type="submit" />
     </form>
 
-    <!-- <div v-for="shop in shops" :key="shop.siret"> -->
-    <!-- <h1>{{ shop.siret }}</h1> -->
-
-    <!-- <li v-for="shop in shops" :key="shop.siret">
-
-         <span>{{ shop.siret }}</span> 
-        <span>
-
-          
-          <strong v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut"><strong>Nom:</strong>{{ etablissement.enseigne1Etablissement }}</strong>
-
-        </span>
-       <span class="price">{{ pproduct.price }} zł</span> 
-    </li>-->
-
     <div v-for="shop in shops" :key="shop.siret">
-      <!-- <span>{{ shop.siret }}</span> -->
+      <!-- <span>{{ shop.adresseEtablissement.codePostalEtablissement }}</span> -->
   
-        <div v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut">
-          <div v-if="etablissement.dateFin === null">
-            <div v-if="etablissement.enseigne1Etablissement">
+        <div v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut"> <!-- Niveau 1 : parent = etablissements -->
+
+          <div v-if="etablissement.dateFin === null"> <!-- Toujours ouvert -->
+
+            <div v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
+
               <strong>Nom:</strong>
-              {{ etablissement.enseigne1Etablissement + " " + etablissement.dateFin }}
+              {{ etablissement.enseigne1Etablissement }} 
+                <strong>Adresse:</strong>
+              {{ shop.adresseEtablissement.numeroVoieEtablissement + " " + shop.adresseEtablissement.typeVoieEtablissement + " " +  shop.adresseEtablissement.libelleVoieEtablissement + " " +  shop.adresseEtablissement.codePostalEtablissement + " " +  shop.adresseEtablissement.libelleCommuneEtablissement}}
+
+              <!-- <div v-for="address in shop.adresseEtablissement" :key="address.libelleVoieEtablissement"> <!-- Niveau 1 : parent = etablissements--
+
+              <strong>Adresse:</strong>
+
+                {{ address.numeroVoieEtablissement + " " + address.typeVoieEtablissement + " " +  address.libelleVoieEtablissement}}
+
+              </div> -->
+
             </div>
+
           </div>
+
         </div>
   
-      <!-- <span class="price">{{ pproduct.price }} zł</span>  -->
     </div>
 
     <!-- </div> -->
@@ -71,7 +71,7 @@ export default {
       })
         .then(res => res.json())
         .then(data => {
-          this.shops = data.etablissements;
+          this.shops = data.etablissements; // Niveau 0
           console.log(this.shops);
         });
     }
