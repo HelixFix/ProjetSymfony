@@ -1,46 +1,52 @@
 <template>
-  <div>
-    <h2>{{ titre }}</h2>
-    <div class="container">
-      <div class="col-md-12">
-        <div class="row">
-          <ul id="result">
-            <li v-for="result in results">
+  <div id="result">
+    <h2>Resultat de la recheche</h2>
 
-              {{ result.title }}{{ result.readyInMinutes }}{{ result.image }}
+    <ul v-if="result">
+      <div class="col-md-4" v-for="result in results">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" :src="result.image" alt="Card image cap" />
 
-           </li>
-          </ul>
+          <div class="card-body">
+            <h5 class="card-title">{{ result.title }}</h5>
+          </div>
         </div>
       </div>
-    </div>
+    </ul>
   </div>
 </template>
 <script>
-import App from "../App.vue";
-
+// import App from "../App.vue";
 
 export default {
-   name: "ResultSearch",
- 
+  name: "ResultSearch",
+
   data() {
     return {
-      titre:"liste de la recherche",
-      results: [
-        {
-          id: '',
-          title: '',
-          readyInMinutes: '',
-          servings: '',
-          image: '',
-          imageUrls: [],
-        },
-      ],
-     };
+      titre: "liste de la recherche",
+      results: [],
+      result: {
+        id: "",
+        title: "",
+        readyInMinutes: "",
+        servings: "",
+        image: "",
+        imageUrls: []
+      }
+    };
   },
+
+  // methods: {
+  //   SearchResult() {
+  //     fetch("/search")
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         this.results = data;
+  //         console.log(res.data);
+  //       });
+  //   }
+  // }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

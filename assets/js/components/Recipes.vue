@@ -34,26 +34,16 @@ export default {
 
             api: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random',
 
-            titre:"Recettes",
+            titre:"Recettes Aléatoire",
             recipes:[],
-            number: 1,
-            tags: 'vegetarian,dessert',
+            
 
         }
     },
-    // computed:{
-
-    //     randomNb(){
-
-    //        this.number
-    //     }
-
-    // },
     mounted(){
 
-   
-
-   this.$http.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random'+'/'+this.number+'/'+this.tags,{headers: {Authorization: 'X-RapidAPI-Key fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee'}}).then((response) => {
+   this.$http.get('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random')
+   .then((response) => {
 
    this.recipes = response.data
 
