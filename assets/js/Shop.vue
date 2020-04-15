@@ -8,11 +8,22 @@
       <input type="submit" />
     </form>
 
-        <div v-for="shop in shops" :key="shop.siret"> 
+    <!-- <div v-for="shop in shops" :key="shop.siret"> -->
+      <!-- <h1>{{ shop.siret }}</h1> -->
 
-        <h1>{{ shop.siren }}</h1>
+      <li v-for="shop in shops" :key="shop.siret">
 
-    </div>
+        <span>{{ shop.siret }}</span>
+        <span>
+
+          <strong>Nom:</strong>
+          <strong v-for="etablissement in shop.periodesEtablissement" :key="etablissement.enseigne1Etablissement">{{ shop.enseigne1Etablissement }}</strong>
+
+        </span>
+        <!-- <span class="price">{{ pproduct.price }} zł</span> -->
+      </li>
+
+    <!-- </div> -->
 
     <!-- <Postal /> -->
 
@@ -45,9 +56,8 @@ export default {
       })
         .then(res => res.json())
         .then(data => {
-            this.shops = data.etablissements;
-            console.log(this.shops)
-            
+          this.shops = data.etablissements;
+          console.log(this.shops);
         });
     }
   }
