@@ -8,37 +8,48 @@
       <input type="submit" />
     </form>
 
-   
+   <div class="container">
+       <div class="row">
 
-    <div class="" style="width: 18rem;margin-top: 1em;" v-for="shop in shops" :key="shop.siret">
+    <div class="" style="margin-top: 1em;" v-for="shop in shops" :key="shop.siret">
       <!-- <span>{{ shop.adresseEtablissement.codePostalEtablissement }}</span> -->
       
   
-        <div v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut"> <!-- Niveau 1 : parent = etablissements -->
+        <div class=""  v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut"> <!-- Niveau 1 : parent = etablissements -->
 
 
-          <div v-if="etablissement.dateFin === null"> <!-- Toujours ouvert -->
+          <div  class="" v-if="etablissement.dateFin === null"> <!-- Toujours ouvert -->
 
-            <div class="card card-body" v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
+            <div class="card card-body col-sm;  " v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
+            <div style="width: 21rem; height: 336px;">
+                <div style="height: 288px;"
                 <img v-if="etablissement.enseigne1Etablissement === 'CARREFOUR CITY'" class="card-img-top" src="../images/05993171_NV_0001_photo.jpg" alt="Card image cap">
                 <img v-if="etablissement.enseigne1Etablissement === 'CARREFOUR EXPRESS'" class="card-img-top" src="../images/000144453_2_mobile.jpg" alt="Card image cap">
                 <img v-if="etablissement.enseigne1Etablissement === 'PROXI SUPER'" class="card-img-top" src="../images/50944180-da71931211cba7df101dd06a5f521a33.png" alt="Card image cap">
+                </div>
+                
 
                 <h5 class="card-title">{{ etablissement.enseigne1Etablissement }} </h5>
                 
 
                 <!-- <strong>Adresse:</strong> -->
-                <p class="card-text">{{ shop.adresseEtablissement.numeroVoieEtablissement + " " + shop.adresseEtablissement.typeVoieEtablissement + " " +  shop.adresseEtablissement.libelleVoieEtablissement + " " +  shop.adresseEtablissement.codePostalEtablissement + " " +  shop.adresseEtablissement.libelleCommuneEtablissement}}</p>
+                <p class="card-text ">{{ shop.adresseEtablissement.numeroVoieEtablissement + " " + shop.adresseEtablissement.typeVoieEtablissement + " " +  shop.adresseEtablissement.libelleVoieEtablissement + " " +  shop.adresseEtablissement.codePostalEtablissement + " " +  shop.adresseEtablissement.libelleCommuneEtablissement}}</p>
                  <!-- Object pas besoin de faire une boucle -->
 
                 <a v-bind:href="url + etablissement.enseigne1Etablissement + ' ' + shop.adresseEtablissement.typeVoieEtablissement + ' ' + shop.adresseEtablissement.libelleVoieEtablissement + ' ' + shop.adresseEtablissement.codePostalEtablissement + ' ' + shop.adresseEtablissement.libelleCommuneEtablissement" class="btn btn-primary"> Plus d'informations </a>
+                
 
             </div>
-
-          </div>
+ 
 
         </div>
   
+    </div>
+
+    </div>
+
+    </div>
+
     </div>
 
     <!-- </div> -->
