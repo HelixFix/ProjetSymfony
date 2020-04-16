@@ -21,6 +21,8 @@
 
             <div class="card card-body" v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
                 <img v-if="etablissement.enseigne1Etablissement === 'CARREFOUR CITY'" class="card-img-top" src="../images/05993171_NV_0001_photo.jpg" alt="Card image cap">
+                <img v-if="etablissement.enseigne1Etablissement === 'CARREFOUR EXPRESS'" class="card-img-top" src="../images/000144453_2_mobile.jpg" alt="Card image cap">
+                <img v-if="etablissement.enseigne1Etablissement === 'PROXI SUPER'" class="card-img-top" src="../images/50944180-da71931211cba7df101dd06a5f521a33.png" alt="Card image cap">
 
                 <h5 class="card-title">{{ etablissement.enseigne1Etablissement }} </h5>
                 
