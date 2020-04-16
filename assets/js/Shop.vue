@@ -10,24 +10,28 @@
 
    
 
-    <div class="card card-body mb-2" v-for="shop in shops" :key="shop.siret">
+    <div class="card" style="width: 18rem;" v-for="shop in shops" :key="shop.siret">
       <!-- <span>{{ shop.adresseEtablissement.codePostalEtablissement }}</span> -->
+      
   
         <div v-for="etablissement in shop.periodesEtablissement" :key="etablissement.dateDebut"> <!-- Niveau 1 : parent = etablissements -->
 
+
           <div v-if="etablissement.dateFin === null"> <!-- Toujours ouvert -->
 
-            <div v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
+            <div class="card-body" v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
+                    <img v-if="etablissement.enseigne1Etablissement === 'CARREFOUR CITY'" class="card-img-top" src="../images/05993171_NV_0001_photo.jpg" alt="Card image cap">
 
-                <strong>Nom:</strong>
-                {{ etablissement.enseigne1Etablissement }} 
+                <h5 class="card-title">{{ etablissement.enseigne1Etablissement }} </h5>
+                
 
-                <strong>Adresse:</strong>
-                {{ shop.adresseEtablissement.numeroVoieEtablissement + " " + shop.adresseEtablissement.typeVoieEtablissement + " " +  shop.adresseEtablissement.libelleVoieEtablissement + " " +  shop.adresseEtablissement.codePostalEtablissement + " " +  shop.adresseEtablissement.libelleCommuneEtablissement}} <!-- Object pas besoin de faire une boucle -->
+                <!-- <strong>Adresse:</strong> -->
+                <p class="card-text">{{ shop.adresseEtablissement.numeroVoieEtablissement + " " + shop.adresseEtablissement.typeVoieEtablissement + " " +  shop.adresseEtablissement.libelleVoieEtablissement + " " +  shop.adresseEtablissement.codePostalEtablissement + " " +  shop.adresseEtablissement.libelleCommuneEtablissement}}</p>
+                 <!-- Object pas besoin de faire une boucle -->
                 <!-- <a href="https://www.google.com/search?q=" + {{ etablissement.enseigne1Etablissement }} ></a> -->
                 
 
-                <a v-bind:href="url + etablissement.enseigne1Etablissement + ' ' + shop.adresseEtablissement.numeroVoieEtablissement + ' ' + shop.adresseEtablissement.typeVoieEtablissement + ' ' + shop.adresseEtablissement.libelleVoieEtablissement + ' ' + shop.adresseEtablissement.codePostalEtablissement + ' ' + shop.adresseEtablissement.libelleCommuneEtablissement"> test </a>
+                <a v-bind:href="url + etablissement.enseigne1Etablissement + ' ' + shop.adresseEtablissement.typeVoieEtablissement + ' ' + shop.adresseEtablissement.libelleVoieEtablissement + ' ' + shop.adresseEtablissement.codePostalEtablissement + ' ' + shop.adresseEtablissement.libelleCommuneEtablissement" class="btn btn-primary"> Plus d'informations </a>
             </div>
 
           </div>
