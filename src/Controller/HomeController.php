@@ -39,16 +39,12 @@ class HomeController
      */
     public function getSearch(Request $request)
     {
-
-        $client = HttpClient::create(['headers' => [
-            'X-RapidAPI-Host' => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-            'X-RapidAPI-Key' => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee",
-            
-        ]]);
+        $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
+        $client = HttpClient::create();
         
         $data = $client->request(
             'GET',
-            "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=burger"
+            "https://api.spoonacular.com/recipes$key/search?query=burger"
   
         );
 
@@ -63,8 +59,9 @@ class HomeController
      * @Route("/",methods={"GET"} )
      *
      */
-    public function getRecipes()
+    public function getRecipes(Request $request)
     {
+
         $numbers= "/?number=1";
         $tags= 'tags=vegetarian,dessert';
         $client = HttpClient::create();
@@ -76,6 +73,7 @@ class HomeController
         
         $response = new JsonResponse();
         return $response::fromJsonString($data->getContent());
+       
 
     }
 };
