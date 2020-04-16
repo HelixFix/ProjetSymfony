@@ -1,15 +1,18 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+
+
+   <div class="container">
+           <h1>{{ msg }}</h1>
 
     <form v-on:submit.prevent="onSubmit" id="form">
       <input type="text" name="form" placeholder="Votre code postal"/>
 
       <input type="submit" />
     </form>
-
-   <div class="container">
        <div class="row">
+
+           
 
     <div class="" style="margin-top: 1em;" v-for="shop in shops" :key="shop.siret">
       <!-- <span>{{ shop.adresseEtablissement.codePostalEtablissement }}</span> -->
