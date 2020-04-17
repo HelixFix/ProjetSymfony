@@ -15,11 +15,11 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
 
 import Vue from 'vue'
-import VueResource from 'vue-resource'
+// import VueResource from 'vue-resource'
 
 
 
-Vue.use(VueResource)
+// Vue.use(VueResource)
 
 import App from './App.vue'
 new Vue({
