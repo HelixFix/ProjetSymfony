@@ -15,7 +15,8 @@ console.log("Hello Webpack Encore! Edit me in assets/js/app.js");
 
 import Vue from "vue";
 import Shop from "./Shop.vue";
-import axios from "axios";
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 
 new Vue({
   el: "#shop",
