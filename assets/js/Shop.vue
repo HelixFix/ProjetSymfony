@@ -23,6 +23,8 @@
 
           <div  class="" v-if="etablissement.dateFin === null"> <!-- Toujours ouvert -->
 
+          <div v-if='etablissement.etatAdministratifEtablissement === "A"'>
+
             <div class="card card-body col-sm;  " v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
 
                 <div class="d-flex flex-wrap align-items-center" style="width: 18rem; height: 347px;">
@@ -68,7 +70,7 @@
 
             </div>
  
-
+          </div>
         </div>
   
     </div>
