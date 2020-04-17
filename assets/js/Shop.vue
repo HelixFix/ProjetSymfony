@@ -23,7 +23,7 @@
 
           <div  class="" v-if="etablissement.dateFin === null"> <!-- Toujours ouvert -->
 
-          <div v-if='etablissement.etatAdministratifEtablissement === "A"'>
+          <div v-if='etablissement.etatAdministratifEtablissement === "A"'> <!-- Toujours Actif -->
 
             <div class="card card-body col-sm;  " v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
 
