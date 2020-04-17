@@ -134,6 +134,9 @@ export default {
       this.$v.$touch()
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR'
+            setTimeout(() => {
+          this.submitStatus = 'END'
+        }, 3000)
       } else {
         // do your submit logic here
         this.submitStatus = 'PENDING'
