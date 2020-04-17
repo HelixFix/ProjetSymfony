@@ -2,7 +2,7 @@
   <div class="container">
     <div class="col-md-12">
       <h2>Rechecher vos recettes</h2>
-
+      <!-- Formulaire de recherche de recettes -->
       <div class="row">
         <form id="formRecipesSearch" @submit.prevent="submit">
           <input type="text" name="search" placeholder="Search..." required />
@@ -10,16 +10,19 @@
           <button class="btn btn-success" type="submit">Search</button>
         </form>
       </div>
+      <!-- fin du formulaire-->
+
+      <!-- Affiche des resultats de la recherche -->
       <div v-if="submit" class="col-md-12">
         <div class="row">
           <h2>Search Result</h2>
-          <ul  v-for="result in results" :key="result.id">
+          <ul v-for="result in results" :key="result.id">
             <div class="col-md-4">
               <div class="card" style="width: 18rem;">
                 <a
                   ><img
                     class="card-img-top"
-                    :src="result.image"
+                    :src="urlImage + result.image"
                     alt="Card image cap"
                 /></a>
                 <div class="card-body">
@@ -32,7 +35,9 @@
           </ul>
         </div>
       </div>
+      <!-- fin de l'affichage des résultats -->
 
+      <!-- Affichage de la recette aléatoire -->
       <div>
         <h2>Recipe Random</h2>
         <div class="container">
@@ -45,10 +50,12 @@
                   :key="recipe.id"
                 >
                   <div class="card" style="width: 18rem;">
-                    <a :href="recipe.sourceUrl"><img
-                      class="card-img-top"
-                      :src="recipe.image"
-                      alt="Card image cap" target="_blank"
+                    <a :href="recipe.sourceUrl"
+                      ><img
+                        class="card-img-top"
+                        :src="recipe.image"
+                        alt="Card image cap"
+                        target="_blank"
                     /></a>
                     <div class="card-body">
                       <h5 class="card-title">{{ recipe.title }}</h5>
@@ -60,12 +67,12 @@
           </div>
         </div>
       </div>
+      <!-- Fin de l'affichage de la recette aléatoire -->
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "app",
 
@@ -81,13 +88,14 @@ export default {
           imageUrls: [],
         },
       ],
-
+      urlImage: "https://spoonacular.com/recipeImages/",
       recipes: [],
     };
   },
 
   methods: {
-    submit: function(event) { // function du formulaire lors de la soumission
+    submit: function(event) {
+      // function du formulaire lors de la soumission
       const formData = new FormData(
         document.getElementById("formRecipesSearch")
       );
@@ -95,7 +103,6 @@ export default {
         method: "POST",
         body: formData,
         success: true,
-       
       })
         .then((res) => res.json())
         .then((data) => {
@@ -103,7 +110,7 @@ export default {
           console.log(data.results);
         })
         .then((res) => "erreur");
-       
+
       // this.$emit("add-to-search", this.results);
     },
   },
