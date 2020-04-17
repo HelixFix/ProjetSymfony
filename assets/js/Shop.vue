@@ -55,7 +55,7 @@
 
                         </div>
                         
-                        <h5 class="card-title" style="width: 330px;">{{ etablissement.enseigne1Etablissement }} </h5>
+                        <h5 class="card-title" style="width: 330px;">{{ etablissement.enseigne1Etablissement }}</h5>
                         
                         <div class="card-text" style="width: 280px;">
                         <!-- <strong>Adresse:</strong> -->
@@ -144,8 +144,8 @@ export default {
 
 <style scoped>
 
-div:empty {
-    display: none;
-}
+    div:empty {
+        display: none;
+    }
 
 </style>
