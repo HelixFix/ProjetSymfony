@@ -4,26 +4,28 @@
       <h2>Rechecher vos recettes</h2>
 
       <div class="row">
-        <form id="formRecipesSearch" @submit="submit">
+        <form id="formRecipesSearch" @submit.prevent="submit">
           <input type="text" name="search" placeholder="Search..." required />
 
           <button class="btn btn-success" type="submit">Search</button>
         </form>
       </div>
-      <div class="col-md-12">
+      <div v-if="submit" class="col-md-12">
         <div class="row">
           <h2>Resultat de la recheche</h2>
           <ul>
             <div class="col-md-4" v-for="result in results" :key="result.id">
               <div class="card" style="width: 18rem;">
-                <img
-                  class="card-img-top"
-                  :src="result.image"
-                  alt="Card image cap"
-                />
-                <p>{{ result.id }}</p>
+                <a
+                  ><img
+                    class="card-img-top"
+                    :src="result.image"
+                    alt="Card image cap"
+                /></a>
                 <div class="card-body">
-                  <h5 class="card-title">{{ result.title }}</h5>
+                  <a
+                    ><h5 class="card-title">{{ result.title }}</h5></a
+                  >
                 </div>
               </div>
             </div>
@@ -37,9 +39,22 @@
           <div class="col-md-12">
             <div class="row">
               <ul v-for="recipe in recipes" :key="recipe.id">
-                <li>
-                  <p>{{ recipe.id }}</p>
-                </li>
+                <div
+                  class="col-md-4"
+                  v-for="recipe in recipes"
+                  :key="recipe.id"
+                >
+                  <div class="card" style="width: 18rem;">
+                    <img
+                      class="card-img-top"
+                      :src="recipe.image"
+                      alt="Card image cap"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">{{ recipe.title }}</h5>
+                    </div>
+                  </div>
+                </div>
               </ul>
             </div>
           </div>
@@ -50,55 +65,51 @@
 </template>
 
 <script>
-//  const axios = require("axios").default;
-
 export default {
   name: "app",
 
   data() {
     return {
-      results: [],
+      results: [
+        {
+          id: "",
+          title: "",
+          readyInMinutes: 0,
+          servings: 0,
+          image: "",
+          imageUrls: [],
+        },
+      ],
+
       recipes: [],
     };
   },
 
   methods: {
-    //     submit(){
-
-    //         let key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85";
-    //         axios.get('https://api.spoonacular.com/recipes/search?query=burger')
-    //       .then(response => {
-    //         var self = this;
-    //         parseString(response.data, function (err, result) {
-    //           self.events = result
-    //         });
-    //       })
-    //     },
     submit: function(event) {
       const formData = new FormData(
         document.getElementById("formRecipesSearch")
       );
-      fetch("/search", {
+      fetch("/searchResult", {
         method: "post",
         body: formData,
         success: true,
       })
         .then((res) => res.json())
         .then((data) => {
-          this.results = data.results;
-          console.log(this.results);
-        });
+          this.results = JSON.parse(JSON.stringify(data.results));
+          console.log(data.results);
+        }).then((res)=> "erreur");
+        
       // this.$emit("add-to-search", this.results);
     },
   },
   mounted() {
-    console.log("test1"),
-      fetch("/test1")
-        .then((res) => res.json())
-        .then((data) => {
-          this.recipes = JSON.parse(JSON.stringify(data.recipes));
-          console.log(data.recipes[0].vegan);
-        });
+    fetch("/recipes")
+      .then((res) => res.json())
+      .then((data) => {
+        this.recipes = JSON.parse(JSON.stringify(data.recipes));
+      });
   },
 };
 </script>

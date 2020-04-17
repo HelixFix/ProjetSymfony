@@ -34,21 +34,26 @@ class HomeController
 
 
     /**
-     * @Route("/search",methods={"GET"} )
+     * @Route("/searchResult",methods={"GET"} )
      *
      */
     public function getSearch(Request $request)
     {
-        $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
-        $client = HttpClient::create();
+        
+        // $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
+        $client = HttpClient::create( array(
+            "X-RapidAPI-Host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            "X-RapidAPI-Key" => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee"
+          ));
         
         $data = $client->request(
+            
             'GET',
-            "https://api.spoonacular.com/recipes$key/search?query=burger"
+            "https://api.spoonacular.com/recipes/search"
   
         );
 
-
+        
         $response = new JsonResponse();
         return $response::fromJsonString($data->getContent());
        
@@ -56,14 +61,13 @@ class HomeController
 
 
     /**
-     * @Route("/test1",methods={"GET"} )
+     * @Route("/recipes",methods={"GET"} )
      *
      */
     public function getRecipes(Request $request)
     {
 
-        $numbers= "/?number=1";
-        $tags= 'tags=vegetarian,dessert';
+       
         $client = HttpClient::create();
         $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
         $data = $client->request(
