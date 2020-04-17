@@ -56,7 +56,7 @@ class HomeController
 
 
     /**
-     * @Route("/",methods={"GET"} )
+     * @Route("/test1",methods={"GET"} )
      *
      */
     public function getRecipes(Request $request)
@@ -76,4 +76,5 @@ class HomeController
        
 
     }
+    
 };

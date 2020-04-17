@@ -13,7 +13,7 @@
       <div class="col-md-12">
         <div class="row">
           <h2>Resultat de la recheche</h2>
-          <ul v-if="result">
+          <ul>
             <div class="col-md-4" v-for="result in results" :key="result.id">
               <div class="card" style="width: 18rem;">
                 <img
@@ -52,29 +52,28 @@
 <script>
 //  const axios = require("axios").default;
 
-
 export default {
   name: "app",
 
   data() {
     return {
       results: [],
-      recipes: []
+      recipes: [],
     };
   },
 
-   methods: {
-  //     submit(){
+  methods: {
+    //     submit(){
 
-  //         let key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85";
-  //         axios.get('https://api.spoonacular.com/recipes/search?query=burger')
-  //       .then(response => {
-  //         var self = this;
-  //         parseString(response.data, function (err, result) {
-  //           self.events = result
-  //         });
-  //       })
-  //     },
+    //         let key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85";
+    //         axios.get('https://api.spoonacular.com/recipes/search?query=burger')
+    //       .then(response => {
+    //         var self = this;
+    //         parseString(response.data, function (err, result) {
+    //           self.events = result
+    //         });
+    //       })
+    //     },
     submit: function(event) {
       const formData = new FormData(
         document.getElementById("formRecipesSearch")
@@ -82,24 +81,25 @@ export default {
       fetch("/search", {
         method: "post",
         body: formData,
-        success: true
+        success: true,
       })
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           this.results = data.results;
           console.log(this.results);
         });
       // this.$emit("add-to-search", this.results);
+    },
   },
-
-    mounted() {
-      fetch("/")
-        .then(res => res.json())
-        .then(data => {
-          this.recipes = data.recipes;
-          console.log(this.recipes);
+  mounted() {
+    console.log("test1"),
+      fetch("/test1")
+        .then((res) => res.json())
+        .then((data) => {
+          this.recipes = JSON.parse(JSON.stringify(data.recipes));
+          console.log(data.recipes[0].vegan);
         });
-    } }
+  },
 };
 </script>
 

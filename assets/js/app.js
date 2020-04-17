@@ -20,7 +20,7 @@ import VueResource from 'vue-resource'
 
 
 Vue.use(VueResource)
-Vue.use(axios)
+
 import App from './App.vue'
 new Vue({
     el: "#app",
