@@ -8,7 +8,7 @@
 
         <form v-on:submit.prevent="onSubmit" id="form">
 
-            <div class="form-group" :class="{ 'form-group--error': $v.cp.$error }">
+            <div class="form-group" :class="{ 'form-group--error': $v.cp.$error }" style="margin-bottom: 0px;">
 
             <input type="text" name="form" placeholder="Votre code postal" v-model.trim="$v.cp.$model"/>
 
@@ -21,6 +21,7 @@
             <p class="typo__p" v-if="submitStatus === 'OK'">Merci pour votre soumission !</p>
             <p class="typo__p" v-if="submitStatus === 'ERROR'">Veuillez remplir correctement le formulaire.</p>
             <p class="typo__p" v-if="submitStatus === 'PENDING'">Envoi...</p>
+            <p class="typo__p" v-if="submitStatus === 'END'"></p>
 
         </form>
 
@@ -112,7 +113,8 @@ export default {
       shops: [],
       msg: "Magasins près de chez vous",
       url: "https://www.google.com/search?q=",
-      cp: ""
+      cp: "",
+      submitStatus: null
     //   cp: $cp
     };
   },
@@ -138,6 +140,11 @@ export default {
         setTimeout(() => {
           this.submitStatus = 'OK'
         }, 500)
+        setTimeout(() => {
+          this.submitStatus = 'END'
+        }, 3000)
+        console.log(setTimeout(this.submitStatus));
+        
       }
     
       const formData = new FormData(document.getElementById("form"));
