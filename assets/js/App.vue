@@ -12,9 +12,9 @@
       </div>
       <div v-if="submit" class="col-md-12">
         <div class="row">
-          <h2>Resultat de la recheche</h2>
-          <ul>
-            <div class="col-md-4" v-for="result in results" :key="result.id">
+          <h2>Search Result</h2>
+          <ul  v-for="result in results" :key="result.id">
+            <div class="col-md-4">
               <div class="card" style="width: 18rem;">
                 <a
                   ><img
@@ -34,7 +34,7 @@
       </div>
 
       <div>
-        <h2>liste des Recettes</h2>
+        <h2>Recipe Random</h2>
         <div class="container">
           <div class="col-md-12">
             <div class="row">
@@ -45,11 +45,11 @@
                   :key="recipe.id"
                 >
                   <div class="card" style="width: 18rem;">
-                    <img
+                    <a :href="recipe.sourceUrl"><img
                       class="card-img-top"
                       :src="recipe.image"
-                      alt="Card image cap"
-                    />
+                      alt="Card image cap" target="_blank"
+                    /></a>
                     <div class="card-body">
                       <h5 class="card-title">{{ recipe.title }}</h5>
                     </div>
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+
 export default {
   name: "app",
 
@@ -86,25 +87,27 @@ export default {
   },
 
   methods: {
-    submit: function(event) {
+    submit: function(event) { // function du formulaire lors de la soumission
       const formData = new FormData(
         document.getElementById("formRecipesSearch")
       );
       fetch("/searchResult", {
-        method: "post",
+        method: "POST",
         body: formData,
         success: true,
+       
       })
         .then((res) => res.json())
         .then((data) => {
           this.results = JSON.parse(JSON.stringify(data.results));
           console.log(data.results);
-        }).then((res)=> "erreur");
-        
+        })
+        .then((res) => "erreur");
+       
       // this.$emit("add-to-search", this.results);
     },
   },
-  mounted() {
+  created() {
     fetch("/recipes")
       .then((res) => res.json())
       .then((data) => {
