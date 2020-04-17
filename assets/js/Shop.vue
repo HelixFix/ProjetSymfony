@@ -8,9 +8,19 @@
 
         <form v-on:submit.prevent="onSubmit" id="form">
 
-            <input type="text" name="form" placeholder="Votre code postal"/>
+            <div class="form-group" :class="{ 'form-group--error': $v.cp.$error }">
 
-            <input type="submit" />
+            <input type="text" name="form" placeholder="Votre code postal" v-model.trim="$v.cp.$model"/>
+
+            </div>
+            <div class="error" v-if="!$v.cp.required">Veuiillez entrer un code postal</div>
+            <div class="error" v-if="!$v.cp.minLength">Le code postal doit être composé de cinq {{$v.cp.$params.minLength.min}} chiffres.</div>
+
+            <button class="button" type="submit" :disabled="submitStatus === 'PENDING'">Envoyer</button>
+
+            <p class="typo__p" v-if="submitStatus === 'OK'">Merci pour votre soumission !</p>
+            <p class="typo__p" v-if="submitStatus === 'ERROR'">Veuillez remplir correctement le formulaire.</p>
+            <p class="typo__p" v-if="submitStatus === 'PENDING'">Envoi...</p>
 
         </form>
 
@@ -92,6 +102,7 @@
 <script>
 // import Shops from './components/ShopItem'; // importer Shops.vue
 // import Postal from './components/PostalForm'; // importer Shops.vue
+import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
   name: "Shop",
@@ -100,14 +111,35 @@ export default {
     return {
       shops: [],
       msg: "Magasins près de chez vous",
-      url: "https://www.google.com/search?q="
+      url: "https://www.google.com/search?q=",
+      cp: ""
     //   cp: $cp
     };
   },
+  validations: {
+    cp: {
+      required,
+      minLength: minLength(5)
+    },
+
+  },
+
 
   // define methods under the `methods` object
   methods: {
     onSubmit: function(event) {
+      console.log('submit!')
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        this.submitStatus = 'ERROR'
+      } else {
+        // do your submit logic here
+        this.submitStatus = 'PENDING'
+        setTimeout(() => {
+          this.submitStatus = 'OK'
+        }, 500)
+      }
+    
       const formData = new FormData(document.getElementById("form"));
       fetch("/test", {
         method: "post",
