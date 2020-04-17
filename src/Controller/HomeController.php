@@ -34,25 +34,16 @@ class HomeController
 
 
     /**
-     * @Route("/searchResult",methods={"GET"} )
+     * @Route("/searchResult",methods={"POST"} )
      *
      */
     public function getSearch(Request $request)
     {
-        
-         $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
-        $client = HttpClient::create(
-        //      array(
-        //     "X-RapidAPI-Host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        //     "X-RapidAPI-Key" => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee"
-        //   )
-        );
-        
+        $client = HttpClient::create();
+        $recipe = ($request->get('formRecipesSearch'));
         $data = $client->request(
-            
             'GET',
-            "https://api.spoonacular.com/recipes/search$key"
-  
+            "https://api.spoonacular.com/recipes/search?query=$recipe&apiKey=336da2ca084c4d70a0f4f966b6d76c85"
         );
 
         
@@ -82,5 +73,27 @@ class HomeController
        
 
     }
+
+/**
+     * @Route("/recipes/{id}",methods={"GET"} )
+     *
+     */
+    public function getRecipeShow(Request $request, $id)
+    {
+
+       
+        $client = HttpClient::create();
+        $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
+        $data = $client->request(
+            'GET',
+            "https://api.spoonacular.com/recipes/random$key"
+        );
+        
+        $response = new JsonResponse();
+        return $response::fromJsonString($data->getContent());
+       
+
+    }
+
     
 };
