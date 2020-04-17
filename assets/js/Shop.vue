@@ -27,7 +27,7 @@
 
             <div class="card card-body col-sm;  " v-if="etablissement.enseigne1Etablissement"> <!-- Possède un nom -->
 
-                <div class="d-flex flex-wrap align-items-center" style="width: 18rem; height: 347px;">
+                <div class="d-flex flex-wrap align-items-center " style="width: 18rem; height: 347px;">
                 
                     <img v-if="etablissement.enseigne1Etablissement === 'CARREFOUR CITY'" class="card-img-top" src="../images/05993171_NV_0001_photo.jpg" alt="Card image cap">
                     <img v-else-if="etablissement.enseigne1Etablissement === 'CARREFOUR EXPRESS'" class="card-img-top" src="../images/000144453_2_mobile.jpg" alt="Card image cap">
