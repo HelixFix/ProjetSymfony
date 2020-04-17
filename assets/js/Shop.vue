@@ -15,6 +15,7 @@
             </div>
             <div class="error" v-if="!$v.cp.required">Veuiillez entrer un code postal</div>
             <div class="error" v-if="!$v.cp.minLength">Le code postal doit être composé de cinq {{$v.cp.$params.minLength.min}} chiffres.</div>
+            <div class="error" v-if="!$v.cp.maxLength">Le code postal doit être composé de cinq {{$v.cp.$params.maxLength.min}} chiffres.</div>
 
             <button class="button" type="submit" :disabled="submitStatus === 'PENDING'">Envoyer</button>
 
@@ -103,7 +104,7 @@
 <script>
 // import Shops from './components/ShopItem'; // importer Shops.vue
 // import Postal from './components/PostalForm'; // importer Shops.vue
-import { required, minLength } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength } from 'vuelidate/lib/validators'
 
 export default {
   name: "Shop",
@@ -121,7 +122,8 @@ export default {
   validations: {
     cp: {
       required,
-      minLength: minLength(5)
+      minLength: minLength(5),
+      maxLength: maxLength(5)
     },
 
   },
