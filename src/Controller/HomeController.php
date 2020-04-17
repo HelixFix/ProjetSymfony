@@ -40,16 +40,18 @@ class HomeController
     public function getSearch(Request $request)
     {
         
-        // $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
-        $client = HttpClient::create( array(
-            "X-RapidAPI-Host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-            "X-RapidAPI-Key" => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee"
-          ));
+         $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
+        $client = HttpClient::create(
+        //      array(
+        //     "X-RapidAPI-Host" => "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        //     "X-RapidAPI-Key" => "fccf95e500mshf21a0964dad01cap1031e9jsn32f91aef5eee"
+        //   )
+        );
         
         $data = $client->request(
             
             'GET',
-            "https://api.spoonacular.com/recipes/search"
+            "https://api.spoonacular.com/recipes/search$key"
   
         );
 

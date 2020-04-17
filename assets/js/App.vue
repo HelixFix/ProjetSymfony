@@ -99,7 +99,7 @@ export default {
         .then((data) => {
           this.results = JSON.parse(JSON.stringify(data.results));
           console.log(data.results);
-        }).then((res)=> "erreur");
+        })
         
       // this.$emit("add-to-search", this.results);
     },
