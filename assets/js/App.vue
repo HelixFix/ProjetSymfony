@@ -13,7 +13,7 @@
       <!-- fin du formulaire-->
 
       <!-- Affiche des resultats de la recherche -->
-      <div v-if="submit" class="col-md-12">
+      <div v-if="isDisplay" class="col-md-12">
         <div class="row">
           <h2>Search Result</h2>
           <ul v-for="result in results" :key="result.id">
@@ -90,6 +90,7 @@ export default {
       ],
       urlImage: "https://spoonacular.com/recipeImages/",
       recipes: [],
+      isDisplay: false,
     };
   },
 
@@ -99,6 +100,7 @@ export default {
       const formData = new FormData(
         document.getElementById("formRecipesSearch")
       );
+      this.isDisplay = true,
       fetch("/searchResult", {
         method: "POST",
         body: formData,
