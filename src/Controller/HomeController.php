@@ -34,36 +34,56 @@ class HomeController
 
 
     /**
-     * @Route("/search",methods={"GET"} )
+     * @Route("/searchResult",methods={"POST"} )
      *
      */
-    public function getSearch(Request $request)
+    public function getSearch(Request $request) // methode pour la recherche via le formaulaire search de App.vue
     {
-        $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
         $client = HttpClient::create();
-        
-        $data = $client->request(
+        $recipe = ($request->get('formRecipesSearch'));// recupere la valeur du formulaire
+        $data = $client->request( // requete de la récupération des donnée de l'api http
             'GET',
-            "https://api.spoonacular.com/recipes$key/search?query=burger"
-  
+            "https://api.spoonacular.com/recipes/search?query=$recipe&apiKey=336da2ca084c4d70a0f4f966b6d76c85"
         );
 
-
-        $response = new JsonResponse();
-        return $response::fromJsonString($data->getContent());
+        
+        $response = new JsonResponse(); 
+        return $response::fromJsonString($data->getContent()); // renvoie la réponse des donnée récuperer en format json
        
     }
 
 
     /**
-     * @Route("/test1",methods={"GET"} )
+     * @Route("/recipes",methods={"GET"} )
      *
      */
-    public function getRecipes(Request $request)
+    public function getRecipes(Request $request) // methode pour récupérer les recettes de l'api aléatoire
     {
 
-        $numbers= "/?number=1";
-        $tags= 'tags=vegetarian,dessert';
+       
+        $client = HttpClient::create(); // création de la connection HttpClient
+        $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; // clef d'autorisation pour l'api spoonacular
+        $data = $client->request(
+            'GET',
+            "https://api.spoonacular.com/recipes/random$key" //récupere les données de l'api 
+        );
+        
+        $response = new JsonResponse();
+        return $response::fromJsonString($data->getContent()); // renvoie les données récuperer en format json
+       
+
+    }
+
+
+    /*********************EN CONSTRUCTION */
+    /**
+     * @Route("/recipes/{id}",methods={"GET"} )
+     *
+     */
+    public function getRecipeShow(Request $request, $id) // methode show pour une recette 
+    {
+
+       
         $client = HttpClient::create();
         $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
         $data = $client->request(
@@ -76,5 +96,6 @@ class HomeController
        
 
     }
+
     
 };
