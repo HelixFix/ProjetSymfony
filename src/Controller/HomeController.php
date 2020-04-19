@@ -40,7 +40,7 @@ class HomeController
     public function getSearch(Request $request) // methode pour la recherche via le formaulaire search de App.vue
     {
         $client = HttpClient::create();
-        $recipe = ($request->get('formRecipesSearch'));// recupere la valeur du formulaire
+        $recipe = ($request->get('search'));// recupere la valeur du formulaire
         $data = $client->request( // requete de la récupération des donnée de l'api http
             'GET',
             "https://api.spoonacular.com/recipes/search?query=$recipe&apiKey=336da2ca084c4d70a0f4f966b6d76c85"

@@ -5,7 +5,7 @@
       <!-- Formulaire de recherche de recettes -->
       <div class="row">
         <form id="formRecipesSearch" @submit.prevent="submit">
-          <input type="text" name="search" placeholder="Search..." required />
+          <input id="input" type="text" name="search" placeholder="Search..." required />
 
           <button class="btn btn-success" type="submit">Search</button>
         </form>
@@ -98,7 +98,7 @@ export default {
     submit: function(event) {
       // function du formulaire lors de la soumission
       const formData = new FormData(
-        document.getElementById("formRecipesSearch")
+        document.getElementById("formRecipesSearch"),(document.getElementById(input))
       );
       this.isDisplay = true,
       fetch("/searchResult", {
