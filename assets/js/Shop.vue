@@ -16,7 +16,7 @@
 
             <div class="form-group form-inline md-form form-sm mt-0" :class="{ 'form-group--error': $v.cp.$error }" style="margin-bottom: 0px;">
 
-            <input class="form-control mr-sm-2" type="text" name="form" placeholder="Ex.: 68100" v-model.trim="$v.cp.$model"/>
+            <input class="form-control mr-sm-2" style="width: 260px;" type="text" name="form" placeholder="Ex.: 68100" v-model.trim="$v.cp.$model"/>
             
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" :disabled="submitStatus === 'PENDING'">Envoyer</button>
 
@@ -24,7 +24,7 @@
             
 
             <p class="typo__p" v-if="submitStatus === 'OK'">Merci pour votre soumission !</p>
-            <p class="typo__p" v-if="submitStatus === 'ERROR'">Veuillez remplir correctement le formulaire.</p>
+            <p class="typo__p" style="color: red;" v-if="submitStatus === 'ERROR'">Veuillez remplir correctement le formulaire.</p>
             <p class="typo__p" v-if="submitStatus === 'PENDING'">Envoi...</p>
             <p class="typo__p" v-if="submitStatus === 'END'"></p>
 
@@ -45,29 +45,29 @@
 
                         <div class="d-flex flex-wrap align-items-center " style="width: 18rem; height: 347px;">
                         
-                            <img v-if="etablissement.enseigne1Etablissement === 'CARREFOUR CITY'" class="card-img-top" style="margin-left: 1em;" src="../images/05993171_NV_0001_photo.jpg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'CARREFOUR EXPRESS'" class="card-img-top" style="margin-left: 1em;" src="../images/000144453_2_mobile.jpg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'PROXI SUPER'" class="card-img-top" style="margin-left: 1em;" src="../images/50944180-da71931211cba7df101dd06a5f521a33.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'PROXI'" class="card-img-top" style="margin-left: 1em;" src="../images/Proxi_logo_2012.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'LIDL'" class="card-img-top" style="margin-left: 1em;" src="../images/Lidl_Logo.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'MATCH'" class="card-img-top" style="margin-left: 1em;" src="../images/000144966_2_mobile.jpg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'SUPERMARCHE MATCH'" class="card-img-top" style="margin-left: 1em;" src="../images/000144966_2_mobile.jpg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'DIA'" class="card-img-top" style="margin-left: 1em;" src="../images/Logo_Dia.jpg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'AUCHAN SUPERMARCHE'" class="card-img-top" style="margin-left: 1em;" src="../images/1200px-Logo_Auchan_Supermarché.svg.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'ALDI MARCHE'" class="card-img-top" style="margin-left: 1em;" src="../images/1200px-Aldi_Marche_France.svg.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'ALDI MARCHE SARL'" class="card-img-top" style="margin-left: 1em;" src="../images/1200px-Aldi_Marche_France.svg.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'INTERMARCHE'" class="card-img-top" style="margin-left: 1em;" src="../images/Fichier_1.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'COOP'" class="card-img-top" style="margin-left: 1em;" src="../images/og-default-img.jpg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'MARCHE PLUS'" class="card-img-top" style="margin-left: 1em;" src="../images/Logo_Marché_Plus.jpg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'FRANPRIX'" class="card-img-top" style="margin-left: 1em;" src="../images/Logo_Franprix_2015.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === '8 A HUIT'" class="card-img-top" style="margin-left: 1em;" src="../images/AAAFXCOCFXLX-C30001.gif.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'MUTEVELLI'" class="card-img-top" style="margin-left: 1em;" src="../images/index.jpeg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'MUTEVELLI MARKET'" class="card-img-top" style="margin-left: 1em;" src="../images/index.jpeg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'MUTEVELLI SUPERMARKET'" class="card-img-top" style="margin-left: 1em;" src="../images/index.jpeg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'SIMPLY MARKET'" class="card-img-top" style="margin-left: 1em;" src="../images/1200px-Logo_Simply_Market_2012.svg.png" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'SUMA'" class="card-img-top" style="margin-left: 1em;" src="../images/index2.jpeg" alt="Card image cap">
-                            <img v-else-if="etablissement.enseigne1Etablissement === 'ATAC'" class="card-img-top" style="margin-left: 1em;" src="../images/index3.png" alt="Card image cap">
-                            <img v-else class="card-img-top" style="margin-left: 1em;" src="../images/240_F_37615168_ITlq1TWFGy7KDUgZ9sRmnVANNykBSPNb.jpg" alt="Card image cap">
+                            <img v-if="etablissement.enseigne1Etablissement === 'CARREFOUR CITY'" class="card-img-top" style="margin-left: 1em;" src="../images/CarrefourCity.jpg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'CARREFOUR EXPRESS'" class="card-img-top" style="margin-left: 1em;" src="../images/CarrefourExpress.jpg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'PROXI SUPER'" class="card-img-top" style="margin-left: 1em;" src="../images/ProxiSuper.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'PROXI'" class="card-img-top" style="margin-left: 1em;" src="../images/Proxi.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'LIDL'" class="card-img-top" style="margin-left: 1em;" src="../images/Lidl.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'MATCH'" class="card-img-top" style="margin-left: 1em;" src="../images/Match.jpg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'SUPERMARCHE MATCH'" class="card-img-top" style="margin-left: 1em;" src="../images/Match.jpg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'DIA'" class="card-img-top" style="margin-left: 1em;" src="../images/Dia.jpg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'AUCHAN SUPERMARCHE'" class="card-img-top" style="margin-left: 1em;" src="../images/Auchan.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'ALDI MARCHE'" class="card-img-top" style="margin-left: 1em;" src="../images/Aldi.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'ALDI MARCHE SARL'" class="card-img-top" style="margin-left: 1em;" src="../images/Aldi.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'INTERMARCHE'" class="card-img-top" style="margin-left: 1em;" src="../images/Intermarche.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'COOP'" class="card-img-top" style="margin-left: 1em;" src="../images/coop.jpg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'MARCHE PLUS'" class="card-img-top" style="margin-left: 1em;" src="../images/MarchePlus.jpg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'FRANPRIX'" class="card-img-top" style="margin-left: 1em;" src="../images/Franprix.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === '8 A HUIT'" class="card-img-top" style="margin-left: 1em;" src="../images/8aHuit.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'MUTEVELLI'" class="card-img-top" style="margin-left: 1em;" src="../images/Muteveli.jpeg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'MUTEVELLI MARKET'" class="card-img-top" style="margin-left: 1em;" src="../images/Muteveli.jpeg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'MUTEVELLI SUPERMARKET'" class="card-img-top" style="margin-left: 1em;" src="../images/Muteveli.jpeg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'SIMPLY MARKET'" class="card-img-top" style="margin-left: 1em;" src="../images/SimplyMarket.png" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'SUMA'" class="card-img-top" style="margin-left: 1em;" src="../images/Suma.jpeg" alt="Card image cap">
+                            <img v-else-if="etablissement.enseigne1Etablissement === 'ATAC'" class="card-img-top" style="margin-left: 1em;" src="../images/Atac.png" alt="Card image cap">
+                            <img v-else class="card-img-top" style="margin-left: 1em;" src="../images/Default.jpg" alt="Card image cap">
 
                         </div>
                         
@@ -119,7 +119,8 @@ export default {
       msg: "Magasins près de chez vous",
       url: "https://www.google.com/search?q=",
       cp: "",
-      submitStatus: null
+      submitStatus: null,
+      logoCarrefourCity: "../images/05993171_NV_0001_photo.jpg"
     //   cp: $cp
     };
   },
@@ -191,10 +192,7 @@ export default {
 </script>
 
 <style scoped>
-.typo__p {
-  text-decoration-color: red;
-  color: red;
-}
+
 
 </style>
 
