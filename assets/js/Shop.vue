@@ -6,27 +6,27 @@
         
         <h1>{{ msg }}</h1>
 
+
+
         <form class="" v-on:submit.prevent="onSubmit" id="form">
 
-            <div class="error ml-3" v-if="!$v.cp.required">Veuillez entrer un code postal</div>
-            <div class="error ml-3" v-if="!$v.cp.minLength">Le code postal doit être composé de cinq {{$v.cp.$params.minLength.min}} chiffres.</div>
-            <div class="error ml-3" v-if="!$v.cp.maxLength">Le code postal doit être composé de cinq {{$v.cp.$params.maxLength.max}} chiffres.</div>
+            <div class="error" v-if="!$v.cp.required">Veuillez entrer un code postal</div>
+            <div class="error" v-if="!$v.cp.minLength">Le code postal doit être composé de cinq {{$v.cp.$params.minLength.min}} chiffres.</div>
+            <div class="error" v-if="!$v.cp.maxLength">Le code postal doit être composé de cinq {{$v.cp.$params.maxLength.max}} chiffres.</div>
 
             <div class="form-group form-inline md-form form-sm mt-0" :class="{ 'form-group--error': $v.cp.$error }" style="margin-bottom: 0px;">
 
-            <input class="form-control form-control-sm ml-3 w-25" type="text" name="form" placeholder="Ex.: 68100" v-model.trim="$v.cp.$model"/>
+            <input class="form-control mr-sm-2" type="text" name="form" placeholder="Ex.: 68100" v-model.trim="$v.cp.$model"/>
             
-            <button class="btn btn-outline-primary btn-rounded btn-sm my-0 waves-effect waves-light" type="submit" :disabled="submitStatus === 'PENDING'">Envoyer</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" :disabled="submitStatus === 'PENDING'">Envoyer</button>
 
             </div>
             
 
-            
-
-            <p class="typo__p ml-3" v-if="submitStatus === 'OK'">Merci pour votre soumission !</p>
-            <p class="typo__p ml-3" v-if="submitStatus === 'ERROR'">Veuillez remplir correctement le formulaire.</p>
-            <p class="typo__p ml-3" v-if="submitStatus === 'PENDING'">Envoi...</p>
-            <p class="typo__p ml-3" v-if="submitStatus === 'END'"></p>
+            <p class="typo__p" v-if="submitStatus === 'OK'">Merci pour votre soumission !</p>
+            <p class="typo__p" v-if="submitStatus === 'ERROR'">Veuillez remplir correctement le formulaire.</p>
+            <p class="typo__p" v-if="submitStatus === 'PENDING'">Envoi...</p>
+            <p class="typo__p" v-if="submitStatus === 'END'"></p>
 
         </form>
 
@@ -191,14 +191,13 @@ export default {
 </script>
 
 <style scoped>
-
-.form input[type=text] {
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
+.typo__p {
+  text-decoration-color: red;
+  color: red;
 }
 
 </style>
+
+{% block stylesheets %}
+
+{% endblock %}
