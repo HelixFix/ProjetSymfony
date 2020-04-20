@@ -48,9 +48,9 @@
         <h2>Recipe Random</h2>
         <div class="container">
           <div class="col-md-12">
-            <ul v-for="(recipe, id) in recipes" :key="recipe.id">
+            <ul v-for="recipe in recipes" :key="recipe.id">
               <div class="row">
-                <div v-for="id in recipe" :key="id">
+                
                   <div class="col-md-2">
                     <div class="card" style="width: 18rem;">
                       <a :href="recipe.sourceUrl"
@@ -62,10 +62,11 @@
                       /></a>
                       <div class="card-body">
                         <h5 class="card-title">{{ recipe.title }}</h5>
+                        <p>{{recipe.image}}</p>
                       </div>
                     </div>
                   </div>
-                </div>
+                
               </div>
             </ul>
           </div>
@@ -103,20 +104,22 @@ export default {
     fetch("/recipes")
       .then((res) => res.json())
       .then((data) => {
-        this.recipes = JSON.parse(JSON.stringify(data.recipes));
+        this.recipes = data
+        console.log(data)
       });
     
   },
-// vm.$mount(recipes){
 
-//     console.log(data.recipes);
+// mounted: function(){
+
+//     console.log(recipes);
 //     for (let i = 0; i < this.recipes.length; i++) {
 //       this.recipes[i].push(0,1);
 //       for (let j = 0; j < this.recipes[i].recipe.length; j++) {
 //         this.recipes[i].recipe[j].push(0,1);
 //       }
 //     }
-//   }
+//   },
 
 
   methods: {
