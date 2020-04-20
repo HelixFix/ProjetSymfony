@@ -88,11 +88,12 @@ class HomeController
 
     /*********************EN CONSTRUCTION */
     /**
-     * @Route("/recipes/1", name="show" )
+     * @Route("/recipes/{id}", name="show" )
      *
      */
     public function show(): Response// Permet d'afficher la page show
     {
+
 
         return new Response($this->twig->render('home/show.html.twig')); // Charge show.html.twig
       

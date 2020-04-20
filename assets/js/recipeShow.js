@@ -17,7 +17,7 @@ import Show from './Show.vue'
 
 // Vue.use(VueResource)
 
-import Show from './Show.vue'
+
 new Vue({
    el: "#show",
    // components: {},

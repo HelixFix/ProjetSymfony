@@ -60,15 +60,16 @@
                   :key="recipe.id"
                 >
                   <div class="card" style="width: 18rem;">
-                    <a :href="recipe.sourceUrl"
+                    <a :href="recipe.sourceUrl" target="_blank"
                       ><img
                         class="card-img-top"
                         :src="recipe.image"
                         alt="Card image cap"
                         target="_blank"
+                        
                     /></a>
                     <div class="card-body">
-                      <h5 class="card-title">{{ recipe.title }}</h5>
+                      <a :href="recipe.sourceUrl" target="_blank"><h5 class="card-title">{{ recipe.title }}</h5></a>
                     </div>
                   </div>
                 </div>
