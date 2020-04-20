@@ -10,9 +10,18 @@
 
         <form class="" v-on:submit.prevent="onSubmit" id="form">
 
-            <div class="error" v-if="!$v.cp.required">Veuillez entrer un code postal</div>
-            <div class="error" v-if="!$v.cp.minLength">Le code postal doit être composé de cinq {{$v.cp.$params.minLength.min}} chiffres.</div>
-            <div class="error" v-if="!$v.cp.maxLength">Le code postal doit être composé de cinq {{$v.cp.$params.maxLength.max}} chiffres.</div>
+            <div class="error isa_info" v-if="!$v.cp.required">
+              <i class="fa fa-info-circle"></i>
+              Veuillez entrer un code postal
+            </div>
+            <div class="error isa_warning" v-if="!$v.cp.minLength">
+              <i class="fa fa-warning"></i>
+              Le code postal doit être composé de cinq {{$v.cp.$params.minLength.min}} chiffres.
+            </div>
+            <div class="error isa_warning" v-if="!$v.cp.maxLength">
+              <i class="fa fa-warning"></i>
+              Le code postal doit être composé de cinq {{$v.cp.$params.maxLength.max}} chiffres.
+            </div>
 
             <div class="form-group form-inline md-form form-sm mt-0" :class="{ 'form-group--error': $v.cp.$error }" style="margin-bottom: 0px;">
 
@@ -23,7 +32,10 @@
             </div>
             
 
-            <p class="typo__p" v-if="submitStatus === 'OK'">Merci pour votre soumission !</p>
+            <p class="typo__p isa_success" v-if="submitStatus === 'OK'">
+              <i class="fa fa-check"></i>
+              Merci pour votre soumission !
+            </p>
             <p class="typo__p" style="color: red;" v-if="submitStatus === 'ERROR'">Veuillez remplir correctement le formulaire.</p>
             <p class="typo__p" v-if="submitStatus === 'PENDING'">Envoi...</p>
             <p class="typo__p" v-if="submitStatus === 'END'"></p>
@@ -192,7 +204,32 @@ export default {
 </script>
 
 <style scoped>
-
+.isa_info, .isa_success, .isa_warning, .isa_error {
+margin: 10px 0px;
+padding:12px;
+ 
+}
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.isa_error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}
 
 </style>
 
