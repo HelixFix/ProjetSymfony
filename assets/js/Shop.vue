@@ -13,7 +13,7 @@
             <input type="text" name="form" placeholder="Ex.: 68100" v-model.trim="$v.cp.$model"/>
 
             </div>
-            <div class="error" v-if="!$v.cp.required">Veuiillez entrer un code postal</div>
+            <div class="error" v-if="!$v.cp.required">Veuillez entrer un code postal</div>
             <div class="error" v-if="!$v.cp.minLength">Le code postal doit être composé de cinq {{$v.cp.$params.minLength.min}} chiffres.</div>
             <div class="error" v-if="!$v.cp.maxLength">Le code postal doit être composé de cinq {{$v.cp.$params.maxLength.max}} chiffres.</div>
 
