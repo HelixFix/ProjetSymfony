@@ -5,7 +5,13 @@
       <!-- Formulaire de recherche de recettes -->
       <div class="row">
         <form id="formRecipesSearch" @submit.prevent="submit">
-          <input type="text" name="search" placeholder="Search..." required />
+          <input
+            id="input"
+            type="text"
+            name="search"
+            placeholder="Search..."
+            required
+          />
 
           <button class="btn btn-success" type="submit">Search</button>
         </form>
@@ -13,7 +19,7 @@
       <!-- fin du formulaire-->
 
       <!-- Affiche des resultats de la recherche -->
-      <div v-if="submit" class="col-md-12">
+      <div v-if="isDisplay" class="col-md-12">
         <div class="row">
           <h2>Search Result</h2>
           <ul v-for="result in results" :key="result.id">
@@ -42,28 +48,27 @@
         <h2>Recipe Random</h2>
         <div class="container">
           <div class="col-md-12">
-            <div class="row">
-              <ul v-for="recipe in recipes" :key="recipe.id">
-                <div
-                  class="col-md-4"
-                  v-for="recipe in recipes"
-                  :key="recipe.id"
-                >
-                  <div class="card" style="width: 18rem;">
-                    <a :href="recipe.sourceUrl"
-                      ><img
-                        class="card-img-top"
-                        :src="recipe.image"
-                        alt="Card image cap"
-                        target="_blank"
-                    /></a>
-                    <div class="card-body">
-                      <h5 class="card-title">{{ recipe.title }}</h5>
+            <ul v-for="recipe in recipes" :key="recipe.id">
+              <div class="row">
+                
+                  <div class="col-md-2">
+                    <div class="card" style="width: 18rem;">
+                      <a :href="recipe.sourceUrl"
+                        ><img
+                          class="card-img-top"
+                          :src="recipe.image"
+                          alt="Card image cap"
+                          target="_blank"
+                      /></a>
+                      <div class="card-body">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <p>{{recipe.image}}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </ul>
-            </div>
+                
+              </div>
+            </ul>
           </div>
         </div>
       </div>
@@ -90,36 +95,53 @@ export default {
       ],
       urlImage: "https://spoonacular.com/recipeImages/",
       recipes: [],
+
+      isDisplay: false,
     };
   },
+
+  created: function() {
+    fetch("/recipes")
+      .then((res) => res.json())
+      .then((data) => {
+        this.recipes = data
+        console.log(data)
+      });
+    
+  },
+
+// mounted: function(){
+
+//     console.log(recipes);
+//     for (let i = 0; i < this.recipes.length; i++) {
+//       this.recipes[i].push(0,1);
+//       for (let j = 0; j < this.recipes[i].recipe.length; j++) {
+//         this.recipes[i].recipe[j].push(0,1);
+//       }
+//     }
+//   },
+
 
   methods: {
     submit: function(event) {
       // function du formulaire lors de la soumission
       const formData = new FormData(
-        document.getElementById("formRecipesSearch")
+        document.getElementById("formRecipesSearch"),
+        document.getElementById(input)
       );
-      fetch("/searchResult", {
-        method: "POST",
-        body: formData,
-        success: true,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          this.results = JSON.parse(JSON.stringify(data.results));
-          console.log(data.results);
+      (this.isDisplay = true),
+        fetch("/searchResult", {
+          method: "POST",
+          body: formData,
+          success: true,
         })
-        .then((res) => "erreur");
-
-      // this.$emit("add-to-search", this.results);
+          .then((res) => res.json())
+          .then((data) => {
+            this.results = JSON.parse(JSON.stringify(data.results));
+            console.log(data.results);
+          })
+          .then((res) => "erreur");
     },
-  },
-  created() {
-    fetch("/recipes")
-      .then((res) => res.json())
-      .then((data) => {
-        this.recipes = JSON.parse(JSON.stringify(data.recipes));
-      });
   },
 };
 </script>

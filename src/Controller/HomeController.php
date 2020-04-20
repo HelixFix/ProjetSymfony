@@ -39,17 +39,18 @@ class HomeController
      */
     public function getSearch(Request $request) // methode pour la recherche via le formaulaire search de App.vue
     {
+
         $client = HttpClient::create();
-        $recipe = ($request->get('formRecipesSearch'));// recupere la valeur du formulaire
+        $recipe = ($request->get('search')); // recupere la valeur de l'input dans le formulaire
         $data = $client->request( // requete de la récupération des donnée de l'api http
             'GET',
             "https://api.spoonacular.com/recipes/search?query=$recipe&apiKey=336da2ca084c4d70a0f4f966b6d76c85"
         );
 
-        
-        $response = new JsonResponse(); 
+
+        $response = new JsonResponse();
         return $response::fromJsonString($data->getContent()); // renvoie la réponse des donnée récuperer en format json
-       
+
     }
 
 
@@ -60,17 +61,27 @@ class HomeController
     public function getRecipes(Request $request) // methode pour récupérer les recettes de l'api aléatoire
     {
 
-       
+        $recipe = [];
         $client = HttpClient::create(); // création de la connection HttpClient
-        $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; // clef d'autorisation pour l'api spoonacular
-        $data = $client->request(
-            'GET',
-            "https://api.spoonacular.com/recipes/random$key" //récupere les données de l'api 
-        );
+        $key = "?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; // clef d'autorisation pour l'api spoonacular
         
+        for ($i = 0; $i <= 2; $i++) {
+
+            $data = $client->request(
+                'GET',
+                "https://api.spoonacular.com/recipes/random$key" //récupere les données de l'api 
+            );
+            // $recipe[] = $data->getContent();
+            $result = json_decode($data->getContent());
+            $recipe[] = $result->recipes[0];
+            
+        }
+      
         $response = new JsonResponse();
-        return $response::fromJsonString($data->getContent()); // renvoie les données récuperer en format json
-       
+        $response->setData($recipe);
+        return $response;
+        // ::fromJsonString($data->getContent()); // renvoie les données récuperer en format json
+
 
     }
 
@@ -83,19 +94,15 @@ class HomeController
     public function getRecipeShow(Request $request, $id) // methode show pour une recette 
     {
 
-       
+
         $client = HttpClient::create();
-        $key ="?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; 
+        $key = "?apiKey=336da2ca084c4d70a0f4f966b6d76c85";
         $data = $client->request(
             'GET',
             "https://api.spoonacular.com/recipes/random$key"
         );
-        
+
         $response = new JsonResponse();
         return $response::fromJsonString($data->getContent());
-       
-
     }
-
-    
 };
