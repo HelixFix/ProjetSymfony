@@ -16,7 +16,7 @@
 
             <div class="form-group form-inline md-form form-sm mt-0" :class="{ 'form-group--error': $v.cp.$error }" style="margin-bottom: 0px;">
 
-            <input class="form-control mr-sm-2" style="width: 260px;" type="text" name="form" placeholder="Ex.: 68100" v-model.trim="$v.cp.$model"/>
+            <input class="form-control mr-sm-2" style="width: 260px;" type="text" name="form" placeholder="Ex.: 68100" pattern="[0-9]{5}" v-model.trim="$v.cp.$model"/>
             
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" :disabled="submitStatus === 'PENDING'">Envoyer</button>
 

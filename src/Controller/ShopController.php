@@ -31,7 +31,7 @@ class ShopController extends AbstractController
         // $cp = rtrim($request->get('form')); 
         $cp = ($request->get('form')); // Récupère résultat formulaire
         $url = "https://api.insee.fr/entreprises/sirene/V3/siret?q=codePostalEtablissement:$cp AND activitePrincipaleUniteLegale:47.11D";
-        $data = $client->request('GET',$url,['auth_bearer' => 'f0783803-3dc1-32a5-9170-003d749e6217']);
+        $data = $client->request('GET',$url,['auth_bearer' => '2bfe24f2-62bf-32b0-bce1-154e74554065']);
         $response = new JsonResponse();
         return $response::fromJsonString($data->getContent());
 
