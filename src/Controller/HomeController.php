@@ -88,21 +88,14 @@ class HomeController
 
     /*********************EN CONSTRUCTION */
     /**
-     * @Route("/recipes/{id}",methods={"GET"} )
+     * @Route("/recipes/1", name="show" )
      *
      */
-    public function getRecipeShow(Request $request, $id) // methode show pour une recette 
+    public function show(): Response// Permet d'afficher la page show
     {
 
+        return new Response($this->twig->render('home/show.html.twig')); // Charge show.html.twig
+      
 
-        $client = HttpClient::create();
-        $key = "?apiKey=336da2ca084c4d70a0f4f966b6d76c85";
-        $data = $client->request(
-            'GET',
-            "https://api.spoonacular.com/recipes/random$key"
-        );
-
-        $response = new JsonResponse();
-        return $response::fromJsonString($data->getContent());
     }
 };
