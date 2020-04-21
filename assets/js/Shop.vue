@@ -246,6 +246,11 @@ padding:12px;
   color: #232323;
 }
 
+.row {
+  margin-right: -8px;
+  margin-left: -5px;
+}
+
 </style>
 
 {% block stylesheets %}
