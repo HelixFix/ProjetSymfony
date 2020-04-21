@@ -22,6 +22,7 @@ export default {
   //   };
   // },
   created: function() {
+    
     let id = parseInt(window.location.href.split("/").pop());
     
     if (Number.isInteger(id)) {
