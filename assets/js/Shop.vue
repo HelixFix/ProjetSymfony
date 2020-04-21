@@ -23,11 +23,15 @@
               Le code postal doit être composé de cinq {{$v.cp.$params.maxLength.max}} chiffres.
             </div>
 
-            <div class="form-group form-inline md-form form-sm mt-0" :class="{ 'form-group--error': $v.cp.$error }" style="margin-bottom: 0px;">
+            <div class="search">
 
+            <div class="form-group form-inline md-form form-sm mt-0" :class="{ 'form-group--error': $v.cp.$error }" style="margin-bottom: 0px;">
+            <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;&nbsp;Trouvez votre magasin&nbsp;&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;
             <input class="form-control mr-sm-2" style="width: 260px;" type="text" name="form" placeholder="Ex.: 68100" pattern="[0-9]{5}" v-model.trim="$v.cp.$model"/>
             
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" :disabled="submitStatus === 'PENDING'">Envoyer</button>
+
+            </div>
 
             </div>
             
@@ -130,6 +134,7 @@ export default {
       shops: [],
       msg: "Magasins près de chez vous",
       url: "https://www.google.com/search?q=",
+      map: "https://www.google.fr/maps?q=",
       cp: "",
       submitStatus: null,
       logoCarrefourCity: "../images/05993171_NV_0001_photo.jpg"
@@ -229,6 +234,16 @@ padding:12px;
     margin:10px 22px;
     font-size:2em;
     vertical-align:middle;
+}
+
+.search {
+  background: #e7e7e7;
+  border: 1px solid #a0a0a0;
+  padding: 20px;
+  text-align: center;
+  font-family: "Montserrat",Arial,Helvetica,sans-serif;
+  font-size: 14px;
+  color: #232323;
 }
 
 </style>
