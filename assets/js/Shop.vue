@@ -251,6 +251,11 @@ padding:12px;
   margin-left: -5px;
 }
 
+h1 {
+  text-transform: uppercase ;
+  font-weight: bold;
+}
+
 </style>
 
 {% block stylesheets %}
