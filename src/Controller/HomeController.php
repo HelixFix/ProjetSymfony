@@ -49,7 +49,8 @@ class HomeController
 
 
         $response = new JsonResponse();
-        return $response::fromJsonString($data->getContent()); // renvoie la réponse des donnée récuperer en format json
+        return $response::fromJsonString($data->getContent());
+         // renvoie la réponse des donnée récuperer en format json
 
     }
 
@@ -65,7 +66,7 @@ class HomeController
         $client = HttpClient::create(); // création de la connection HttpClient
         $key = "?apiKey=336da2ca084c4d70a0f4f966b6d76c85"; // clef d'autorisation pour l'api spoonacular
         
-        for ($i = 0; $i <= 2; $i++) {
+        for ($i = 0; $i <= 1; $i++) {
 
             $data = $client->request(
                 'GET',
@@ -86,17 +87,36 @@ class HomeController
     }
 
 
-    /*********************EN CONSTRUCTION */
-    /**
-     * @Route("/recipes/{id}", name="show" )
-     *
-     */
-    public function show(): Response// Permet d'afficher la page show
-    {
+    // /*********************EN CONSTRUCTION */
+    // /**
+    //  * @Route("/recipes/1003464", name="show" )
+    //  *
+    //  */
+//     public function show(Request $request): Response// Permet d'afficher la page show
+//     {   
+        
+//         $key = "?apiKey=336da2ca084c4d70a0f4f966b6d76c85";
+//         $client = HttpClient::create();
+//        // $show = ($request->get('show')); // recupere l'id de la recette
+//         $data = $client->request( // requete de la récupération des donnée de l'api http
+//             'GET',
+//             "https://api.spoonacular.com/recipes/716429/information$key"
+//         );
+//     //     $result = json_decode($data->getContent());
+//     //    dd($result);
 
+       
+        
+//         //dd($result);
+//         $response = new JsonResponse();
+        
+//         //$response->setData($info);
+       
+//       return $response::fromJsonString($data->getContent()); // renvoie la réponse des donnée récuperer en format json
+//     //    dd($data->getContent());
 
-        return new Response($this->twig->render('home/show.html.twig')); // Charge show.html.twig
+//         return new Response($this->twig->render('home/show.html.twig')); // Charge show.html.twig
       
 
-    }
+//     }
 };

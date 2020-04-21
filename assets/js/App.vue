@@ -24,21 +24,20 @@
           <div class="row">
             <h2>Search Result</h2>
             <ul>
-              <div class="col-md-4">
-                <div v-for="result in results" :key="result.id">
+              <div class="col-md-4" v-for="result in results" :key="result.id">
+                
                   <div class="card" style="width: 18rem;">
-                    <a
+                    <a href="recipe.sourceUrl" target="_blank"
                       ><img
                         class="card-img-top"
                         :src="urlImage + result.image"
                         alt="Card image cap"
                     /></a>
                     <div class="card-body">
-                      <a
+                      <a href="recipe.sourceUrl" target="_blank"
                         ><h5 class="card-title">{{ result.title }}</h5></a
                       >
                     </div>
-                  </div>
                 </div>
               </div>
             </ul>
@@ -60,7 +59,7 @@
                   :key="recipe.id"
                 >
                   <div class="card" style="width: 18rem;">
-                    <a :href="recipe.sourceUrl" target="_blank"
+                    <a :href="'/recipes/'+recipe.id"
                       ><img
                         class="card-img-top"
                         :src="recipe.image"
@@ -101,7 +100,6 @@ export default {
       ],
       urlImage: "https://spoonacular.com/recipeImages/",
       recipes: [],
-
       isDisplay: false,
     };
   },
@@ -111,7 +109,7 @@ export default {
       .then((res) => res.json())
       .then((data) => {
         this.recipes = data;
-        console.log(data);
+       
       });
   },
 
@@ -142,7 +140,7 @@ export default {
           .then((res) => res.json())
           .then((data) => {
             this.results = JSON.parse(JSON.stringify(data.results));
-            console.log(data.results);
+            
           })
           .then((res) => "erreur");
     },
