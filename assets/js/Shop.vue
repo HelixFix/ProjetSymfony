@@ -26,7 +26,7 @@
             <div class="search">
 
             <div class="form-group form-inline md-form form-sm mt-0" :class="{ 'form-group--error': $v.cp.$error }" style="margin-bottom: 0px;">
-            <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;&nbsp;Trouvez votre magasin&nbsp;&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-map-marker-alt fa-2x" style="margin-left: 18px;margin-right: 18px;"></i>&nbsp;&nbsp;&nbsp;Trouvez votre magasin&nbsp;&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-right "></i>&nbsp;&nbsp;&nbsp;&nbsp;
             <input class="form-control mr-sm-2" style="width: 260px;" type="text" name="form" placeholder="Ex.: 68100" pattern="[0-9]{5}" v-model.trim="$v.cp.$model"/>
             
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" :disabled="submitStatus === 'PENDING'">Envoyer</button>
