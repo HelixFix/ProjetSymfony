@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="col-md-12">
-      <h2>Rechecher vos recettes</h2>
+      <h2>Search your recipe</h2>
       <!-- Formulaire de recherche de recettes -->
       <div class="row">
         <form id="formRecipesSearch" @submit.prevent="submit">
@@ -19,54 +19,59 @@
       <!-- fin du formulaire-->
 
       <!-- Affiche des resultats de la recherche -->
-      <div v-if="isDisplay" class="col-md-12">
-        <div class="row">
-          <h2>Search Result</h2>
-          <ul v-for="result in results" :key="result.id">
-            <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
-                <a
-                  ><img
-                    class="card-img-top"
-                    :src="urlImage + result.image"
-                    alt="Card image cap"
-                /></a>
-                <div class="card-body">
-                  <a
-                    ><h5 class="card-title">{{ result.title }}</h5></a
-                  >
+      <div class="container">
+        <div v-if="isDisplay" class="col-md-12">
+          <div class="row">
+            <h2>Search Result</h2>
+            <ul>
+              <div class="col-md-4">
+                <div v-for="result in results" :key="result.id">
+                  <div class="card" style="width: 18rem;">
+                    <a
+                      ><img
+                        class="card-img-top"
+                        :src="urlImage + result.image"
+                        alt="Card image cap"
+                    /></a>
+                    <div class="card-body">
+                      <a
+                        ><h5 class="card-title">{{ result.title }}</h5></a
+                      >
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
       <!-- fin de l'affichage des résultats -->
 
       <!-- Affichage de la recette aléatoire -->
       <div>
-        <h2>Recipe Random</h2>
+        <h2>recipes suggestions</h2>
         <div class="container">
           <div class="col-md-12">
-            <ul v-for="recipe in recipes" :key="recipe.id">
+            <ul>
               <div class="row">
-                
-                  <div class="col-md-2">
-                    <div class="card" style="width: 18rem;">
-                      <a :href="recipe.sourceUrl"
-                        ><img
-                          class="card-img-top"
-                          :src="recipe.image"
-                          alt="Card image cap"
-                          target="_blank"
-                      /></a>
-                      <div class="card-body">
-                        <h5 class="card-title">{{ recipe.title }}</h5>
-                        <p>{{recipe.image}}</p>
-                      </div>
+                <div
+                  class="col-md-4"
+                  v-for="recipe in recipes"
+                  :key="recipe.id"
+                >
+                  <div class="card" style="width: 18rem;">
+                    <a :href="recipe.sourceUrl"
+                      ><img
+                        class="card-img-top"
+                        :src="recipe.image"
+                        alt="Card image cap"
+                        target="_blank"
+                    /></a>
+                    <div class="card-body">
+                      <h5 class="card-title">{{ recipe.title }}</h5>
                     </div>
                   </div>
-                
+                </div>
               </div>
             </ul>
           </div>
@@ -104,23 +109,21 @@ export default {
     fetch("/recipes")
       .then((res) => res.json())
       .then((data) => {
-        this.recipes = data
-        console.log(data)
+        this.recipes = data;
+        console.log(data);
       });
-    
   },
 
-// mounted: function(){
+  // mounted: function(){
 
-//     console.log(recipes);
-//     for (let i = 0; i < this.recipes.length; i++) {
-//       this.recipes[i].push(0,1);
-//       for (let j = 0; j < this.recipes[i].recipe.length; j++) {
-//         this.recipes[i].recipe[j].push(0,1);
-//       }
-//     }
-//   },
-
+  //     console.log(recipes);
+  //     for (let i = 0; i < this.recipes.length; i++) {
+  //       this.recipes[i].push(0,1);
+  //       for (let j = 0; j < this.recipes[i].recipe.length; j++) {
+  //         this.recipes[i].recipe[j].push(0,1);
+  //       }
+  //     }
+  //   },
 
   methods: {
     submit: function(event) {
