@@ -155,10 +155,10 @@ body {
 }
 
 .searchBox {
-  /* position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 50%); */
+  transform: translate(-50%, 50%);
   background: #2f3640;
   height: 60px;
   border-radius: 40px;
