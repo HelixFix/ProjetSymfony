@@ -1,39 +1,58 @@
 <template>
   <div class="container">
-    <h1>voici la page Recipe show</h1>
+    <h1>{{ recipeShow.title }}</h1>
 
     <div class="col-md-12">
       <div class="container">
         <div class="row">
-
-          <h2></h2>
-
-          <img />
+          <div class="container col-md-6">
+            <div class="col-md-12">
+              <img class="imgRecette" :src="recipeShow.image" style="width:300px height:300px"/>
+            </div>
+          </div>
+          <div class="container col-md-6">
+            <ul>
+              <li class="col-md-12" v-for="ingredients in recipeShow.extendedIngredients">
+                <p>{{ ingredients.name }}<img :src="urlIngredientsImage + ingredients.image"></p>
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  // data() {
-  //   return {
-  //     recipeShow: [],
-  //   };
-  // },
+  data() {
+    return {
+      recipeShow: [],
+      extendedIngredients: [],
+      urlIngredientsImage: 'https://spoonacular.com/cdn/ingredients_100x100/',
+    };
+  },
   created: function() {
-    
     let id = parseInt(window.location.href.split("/").pop());
-    
+
     if (Number.isInteger(id)) {
       fetch("/recipeData/" + id)
         .then((res) => res.json())
         .then((data) => {
+          this.recipeShow = data;
 
-         this.recipeShow = data;
-
+          console.log(this.recipeShow);
         });
     }
   },
 };
 </script>
+
+<style scoped>
+
+img.imgRecette{
+
+  width: 300px;
+  height: 300px;
+}
+
+</style>

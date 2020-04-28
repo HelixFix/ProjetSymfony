@@ -1,5 +1,7 @@
 {% extends "base.html.twig" %}
-
+{% block stylesheets %}
+	{{ encore_entry_link_tags('recipeShow') }} <!-- Pour utiliser css -->
+{% endblock %}
 {% block body %}
 	<div class="jumbotron text-center">
 		<h1>Show Recipe</h1>
