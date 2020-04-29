@@ -5,19 +5,32 @@
     <div class="col-md-12">
       <div class="container">
         <div class="row">
-          <div class="container col-md-6">
+          <div class="container col-md-6 mt-3">
             <div class="col-md-12">
-              <img class="imgRecette" :src="recipeShow.image" style="width:300px height:300px"/>
+              <img
+                class="imgRecette"
+                :src="recipeShow.image"
+                style="width:300px height:300px"
+              />
             </div>
           </div>
           <div class="container col-md-6">
-            <ul>
-              <li class="col-md-12" v-for="ingredients in recipeShow.extendedIngredients">
-                <p>{{ ingredients.name }}<img :src="urlIngredientsImage + ingredients.image"></p>
+            <ul class="container mb-0">
+              <li
+                class="col-md-12 mb-0"
+                v-for="ingredients in recipeShow.extendedIngredients"
+              >
+                <p>
+                  {{ ingredients.name
+                  }}<img :src="urlIngredientsImage + ingredients.image" />
+                </p>
               </li>
             </ul>
           </div>
         </div>
+      </div>
+      <div>
+        {{ recipeShow.instructions }}
       </div>
     </div>
   </div>
@@ -28,9 +41,10 @@ export default {
     return {
       recipeShow: [],
       extendedIngredients: [],
-      urlIngredientsImage: 'https://spoonacular.com/cdn/ingredients_100x100/',
+      urlIngredientsImage: "https://spoonacular.com/cdn/ingredients_100x100/",
     };
   },
+
   created: function() {
     let id = parseInt(window.location.href.split("/").pop());
 
@@ -44,15 +58,13 @@ export default {
         });
     }
   },
+  
 };
 </script>
 
 <style scoped>
-
-img.imgRecette{
-
+img.imgRecette {
   width: 300px;
   height: 300px;
 }
-
 </style>
